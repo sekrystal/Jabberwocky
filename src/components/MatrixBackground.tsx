@@ -18,15 +18,22 @@ export default function MatrixBackground() {
     let height = canvas.height = window.innerHeight;
     let fontSize = 16;
     let columns = Math.floor(width / fontSize);
-    // An array of "y" positions for the drop in each column
-    let drops = Array(columns).fill(1);
+
+    // Array of [y, velocity] for each column
+    let drops = Array.from({ length: columns }, () => ({
+      y: Math.random() * height / fontSize,
+      velocity: 0.8 + Math.random() * 0.55, // much slower (was 1+)
+    }));
 
     // Handle resizing (responsive)
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       columns = Math.floor(width / fontSize);
-      drops = Array(columns).fill(1);
+      drops = Array.from({ length: columns }, () => ({
+        y: Math.random() * height / fontSize,
+        velocity: 0.8 + Math.random() * 0.55,
+      }));
     };
     window.addEventListener("resize", handleResize);
 
@@ -37,23 +44,26 @@ export default function MatrixBackground() {
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < columns; i++) {
-        // Pick a random character in red or green occasionally for accent
         let text = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
+        // Accent: mostly light gray/white, occasional red (accent)
         if (Math.random() > 0.985) {
-          ctx.fillStyle = "#ef4444"; // Red accent
+          ctx.fillStyle = "#ef4444";
         } else {
-          ctx.fillStyle = "#e5e7eb"; // Light gray/white
+          ctx.fillStyle = "#e5e7eb";
         }
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        ctx.fillText(text, i * fontSize, drops[i].y * fontSize);
 
-        // Send drop back to top randomly, otherwise move down
+        // Move the drop down by its velocity (much slower)
+        drops[i].y += drops[i].velocity;
+
+        // Reset to top if off-screen with some randomness
         if (
-          drops[i] * fontSize > height &&
-          Math.random() > 0.975
+          drops[i].y * fontSize > height &&
+          Math.random() > 0.98
         ) {
-          drops[i] = 0;
+          drops[i].y = 0;
+          drops[i].velocity = 0.8 + Math.random() * 0.55;
         }
-        drops[i]++;
       }
       animationId = requestAnimationFrame(draw);
     }
@@ -73,7 +83,6 @@ export default function MatrixBackground() {
       style={{
         background: "black",
         opacity: 0.9,
-        // You can tune opacity if needed
       }}
       aria-hidden="true"
     />
