@@ -11,7 +11,8 @@
 
 ## About
 
-**Jabberwocky** is a browser privacy shield. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks.  
+**Jabberwocky** is a browser privacy extension. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks. 
+
 **This project was made for the [Lovable AI Showdown](https://aishowdown.lovable.app/)!**
 
 ---
@@ -48,7 +49,7 @@ _(The “demo” is the local app UI. For real intercept support, see the integr
 
 ---
 
-## Screenshots & GIFs
+## Screenshots:
 
 Want to see what Jabberwocky looks like?  
 Example usage screenshots—in a quadrant layout—below:
