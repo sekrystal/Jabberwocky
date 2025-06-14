@@ -1,12 +1,12 @@
 // Jabberwocky
 
-> _A privacy-first browser utility that intercepts and obfuscates PII directly in your browser—on your device only._
+> _A privacy-first browser utility that intercepts and obfuscates PII directly in your browser—on your device only.
 
 ---
 
 ## About
 
-**Jabberwocky** is a next-level browser privacy shield. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks.  
+**Jabberwocky** is a browser privacy shield. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks.  
 **This project was made for the [Lovable Competition](https://lovable.dev)!**
 
 ---
@@ -45,8 +45,6 @@
 ## Screenshots & GIFs
 
 Want to see what Jabberwocky looks like?  
-**Just add your images or GIFs inside the `/screenshots` folder, and they’ll show up in the homepage quadrant!**
-
 Example usage (used on the homepage):
 
 <p align="center">
@@ -55,13 +53,6 @@ Example usage (used on the homepage):
   <img src="screenshots/PII Download.png" width="320" alt="PII Download" />
   <img src="screenshots/Plugin Modal.png" width="320" alt="Plugin Modal" />
 </p>
-
-| Example           | Suggested Usage              |
-|-------------------|-----------------------------|
-| Dashboard Top.png | Main dashboard (top)         |
-| Dashboard Bottom.png | Main dashboard (bottom)   |
-| PII Download.png  | Download intercepted PII demo|
-| Plugin Modal.png  | The browser extension popup  |
 
 ---
 
@@ -163,9 +154,7 @@ Convert Jabberwocky to a Chrome/Edge extension:
 ---
 
 ## Even Cooler Work
-
-I care deeply about data privacy.  
-So much so that I work at [Confident Security](https://confident.security)—we build provably private AI. If you’re worried about your data privacy and security, or you’re building an AI product and want to explore partnerships, check us out!
+I work at [Confident Security](https://confident.security)—we build provably private AI. If you've got a popular AI model, lots of compute, and care about your users, give me a holler!
 
 **Follow us for privacy news and updates:**  
 👉 [@confident_sec on Twitter/X](https://x.com/confident_sec)
