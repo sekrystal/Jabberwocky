@@ -3,7 +3,9 @@
 
 > _A privacy-first browser utility that intercepts and obfuscates PII directly on your device._
 
-**Author:** Sam Krystal
+---
+
+![Jabberwocky in action](screenshots/gifdemo.gif)
 
 ---
 
@@ -11,19 +13,13 @@
 
 - [Project Overview](#project-overview)
 - [Screenshots](#screenshots)
-- [Demo GIF](#demo-gif)
-- [Quick Start (Recommended)](#quick-start-recommended)
-  - [Prerequisites](#prerequisites)
-  - [Step 1: Clone the Repo](#step-1-clone-the-repo)
-  - [Step 2: Install Dependencies](#step-2-install-dependencies)
-  - [Step 3: Run Locally](#step-3-run-locally)
-- [Functional Integration: Using snifferjs](#functional-integration-using-snifferjs)
-  - [Install and Setup](#install-and-setup)
-  - [Implement in Code](#implement-in-code)
-  - [Connect Real Events to UI](#connect-real-events-to-ui)
-- [Make a Browser Extension](#make-a-browser-extension)
+- [Quick Start & Onboarding](#quick-start--onboarding)
+- [Install and Integrate `snifferjs`](#install-and-integrate-snifferjs)
+- [How to Make a Browser Extension](#how-to-make-a-browser-extension)
 - [Troubleshooting & FAQ](#troubleshooting--faq)
 - [Credits & License](#credits--license)
+- [About Confident Security](#about-confident-security)
+
 ---
 
 ## Project Overview
@@ -34,185 +30,207 @@ Jabberwocky intercepts and scrambles your browser’s PII (personally identifiab
 
 ## Screenshots
 
-All images are shipped with this repo in `/screenshots` for reliable rendering.
+All these images are included in `/screenshots` for reliable rendering.
 
-### Dashboard (Protection ON)
-![Dashboard ON](screenshots/dashboard-on.png)
-
-### Dashboard (Protection OFF)
-![Dashboard OFF](screenshots/dashboard-off.png)
-
-### Extension Popup Preview
-![Extension Modal](screenshots/popup-modal.png)
-
-#### Additional Screenshots
-
-- **Dashboard Top:**  
-  ![Dashboard Top](screenshots/Dashboard%20Top.png)
-- **Dashboard Bottom:**  
-  ![Dashboard Bottom](screenshots/Dashboard%20Bottom.png)
-- **Plugin Modal:**  
-  ![Plugin Modal](screenshots/Plugin%20Modal.png)
-
----
-
-## Demo GIF
-
-**See Jabberwocky in action (toggle, live log, export/clear):**
-
-![Jabberwocky Demo](screenshots/gifdemo.gif)
-
----
-
-## Quick Start (Recommended)
-
-This section will get you running in <3 minutes.
-
-### Prerequisites
-
-- Modern version of [Node.js](https://nodejs.org/) (20.x+ recommended)
-- [Git](https://git-scm.com/downloads)
+<table>
+  <tr>
+    <td>
+      <b>Dashboard - Protection ON</b><br>
+      <img src="screenshots/dashboard-on.png" width="300" alt="Dashboard - ON" />
+    </td>
+    <td>
+      <b>Dashboard - Protection OFF</b><br>
+      <img src="screenshots/dashboard-off.png" width="300" alt="Dashboard - OFF" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Extension Popup Modal</b><br>
+      <img src="screenshots/popup-modal.png" width="300" alt="Extension Modal" />
+    </td>
+    <td>
+      <b>Dashboard Top</b><br>
+      <img src="screenshots/Dashboard%20Top.png" width="300" alt="Dashboard Top" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Dashboard Bottom</b><br>
+      <img src="screenshots/Dashboard%20Bottom.png" width="300" alt="Dashboard Bottom" />
+    </td>
+    <td>
+      <b>Plugin Modal</b><br>
+      <img src="screenshots/Plugin%20Modal.png" width="300" alt="Plugin Modal" />
+    </td>
+  </tr>
+</table>
 
 ---
 
-### Step 1: Clone the Repo
+## Quick Start & Onboarding
 
-```sh
-git clone <your-repo-url>
-cd Jabberwocky
-```
+This section will get you running in just a few minutes! **You don’t need to be a developer: you can use GitHub, VSCode, or just a folder on your computer.**
 
----
+### Option 1: Download or Clone
 
-### Step 2: Install Dependencies
+- **With GitHub:** Click the **Code** button on GitHub (top right), and “Download ZIP”. Unzip it.
+- **With Git (in terminal):**
+  ```sh
+  git clone <your-repo-url>
+  cd Jabberwocky
+  ```
+- **With GitHub Desktop:** Use the "Open with GitHub Desktop" button for a GUI experience.
 
-```sh
-npm install
-```
+### Option 2: Install Dependencies
 
----
+- **Graphical Tools:** If you use [Visual Studio Code](https://code.visualstudio.com/), open the folder. VSCode will suggest to “Install dependencies”. Click the button!
+- **Manual (terminal, optional):**
+  ```sh
+  npm install
+  ```
+  If you don't have Node.js, [download it here](https://nodejs.org/).
 
-### Step 3: Run Locally
+### Option 3: Run Locally
 
-```sh
-npm run dev
-```
-
-Then open your browser at [http://localhost:5173](http://localhost:5173).
-
----
-
-## Functional Integration: Using snifferjs
-
-_Hook up the real PII interception with just a few steps!_
-
-### Install and Setup
-
-1. **Install snifferjs**
-
-   ```sh
-   npm install snifferjs
-   ```
-
-2. **Create the Integration File**
-
-   Create `src/lib/snifferjs.ts`:
-
-   ```ts
-   // src/lib/snifferjs.ts
-   import snifferjs from "snifferjs";
-   snifferjs.patchAll();
-   // OPTIONAL: Export event bridge logic if needed.
-   ```
-
-3. **Replace the Mock Import**
-
-   - Find all uses of `snifferjs-mock` in your source and **replace** with your new `snifferjs.ts`:
-     > Example:
-     > ```ts
-     > import "./lib/snifferjs";
-     > ```
+- **VSCode:** Look for a “Run and Debug” button (or `npm run dev` in the inbuilt terminal).
+- **Manual (terminal, optional):**
+  ```sh
+  npm run dev
+  ```
+- Your browser should open at [http://localhost:5173](http://localhost:5173).
 
 ---
 
-### Implement in Code
+## Install and Integrate `snifferjs`
 
-- In your root entry (often `src/main.tsx` or `src/App.tsx`), import the integration at the very top (before any React code):
+**Provide real PII interception with just a few easy steps!**
 
+### 1. Install snifferjs
+
+- **With VSCode GUI:** Open “Extensions”, search for “npm scripts”, and run “npm install snifferjs”.
+- **Or in a terminal:**
+  ```sh
+  npm install snifferjs
+  ```
+
+### 2. Create the Integration File
+
+- Open the `/src/lib/` folder (create if missing)
+- **Make a new file** called `snifferjs.ts` and paste:
+  ```ts
+  // src/lib/snifferjs.ts
+  import snifferjs from "snifferjs";
+  snifferjs.patchAll();
+  ```
+- This makes sure snifferjs protects you immediately on site/app load.
+
+### 3. Enable Sniffer in the App
+
+- **Find your app’s main entry point** (`src/main.tsx`).
+- **Add this line at the very top:**
   ```ts
   import "./lib/snifferjs";
   ```
-
-- This ensures interception is active **as soon as possible**.
-
----
-
-### Connect Real Events to UI
-
-- Wherever you build your log/state (for intercepted records), receive real snifferjs events and transform them to your UI’s format (`InterceptRecord`).
-- See `snifferjs` [official docs](https://github.com/cyphunk/snifferjs) for more about subscribing to events.
+- That's it! Jabberwocky will now intercept and scramble PII in real time.
 
 ---
 
-## Make a Browser Extension
+## How to Make a Browser Extension
 
-Turn this app into a Chrome/Edge extension!
+It's easy—just follow these steps! A ready-to-use manifest is provided below.
 
-### Step 1: Add `manifest.json`
+### 1. Create `manifest.json`
 
-Create a manifest in your project root. Example:
+Copy this file into your project root:
 
 ```json
 {
   "manifest_version": 3,
   "name": "Jabberwocky",
   "version": "1.0.0",
-  "permissions": ["scripting", "activeTab", "storage"],
+  "description": "A privacy tool to intercept and shield PII.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
   "background": {
     "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
   }
-  // ...add popup/option page etc as needed...
 }
 ```
-> _Docs:_ [MDN Chrome Extensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json)
 
----
+#### What do these fields mean?
+- `permissions`: Lets Jabberwocky access your tabs (to protect you).
+- `action`: Makes your app show up as the extension popup.
+- `content_scripts`: Tells the browser what to inject into each webpage.
+- `background`: Runs the service worker code.
+- `icons`: Sets the icons for your extension at various sizes.
 
-### Step 2: Inject snifferjs Early
+### 2. Make Sure snifferjs Runs Immediately
 
-- Ensure `snifferjs.patchAll()` runs as soon as possible (background or content script).
+- **Add this line at the very top of your extension’s main file** (`content.js` or similar):
+  ```js
+  import snifferjs from "snifferjs";
+  snifferjs.patchAll();
+  ```
+  This makes privacy protection instant as soon as a page loads.
 
----
+### 3. Use the Dashboard as Popup
 
-### Step 3: Use the Dashboard as Popup
-
-- Set your **built React app** (`dist`) as the extension's `action.default_popup` in the manifest.
-- Load `/dist` as an unpacked extension:  
-  Go to `chrome://extensions` → Enable "Developer mode" → "Load unpacked".
+- Build your app (`npm run build`)
+- Set the extension’s popup to `index.html` or the correct build path.
+- Load it in Chrome:
+  - Go to `chrome://extensions`
+  - Enable “Developer mode”
+  - Click “Load unpacked” and select your `/dist` folder
 
 ---
 
 ## Troubleshooting & FAQ
 
-**Images not showing?**  
-- Double-check screenshot paths; these are relative to your `/screenshots` directory.
+**Images not showing up?**
+- Double-check that you’re using the screenshots shipped in `/screenshots` and your README uses the correct file names/spelling/casing.
 
-**Getting “snifferjs not patching”?**  
-- Ensure `snifferjs` is imported/initialized *before* the app mounts.
+**Snifferjs not active?**
+- Make sure you followed step 3 in “Install and Integrate snifferjs” above.
+- Look at your browser console for warnings or errors.
 
-**Other issues?**  
-- Make sure all dependencies are installed  
-- Try restarting your dev server  
-- Watch your browser console for errors
+**Not sure how to use the Terminal?**
+- Try [GitHub Desktop](https://desktop.github.com/) or [Visual Studio Code](https://code.visualstudio.com/)—you can click buttons instead of typing commands!
+
+**Still stuck?**
+- Try restarting your computer, your browser, or deleting/reinstalling `node_modules`.
 
 ---
 
 ## Credits & License
 
 - **Author:** Sam Krystal
-- Built using [Lovable](https://lovable.dev) + [OpenAI](https://openai.com)
+- Built with [Lovable](https://lovable.dev) + [OpenAI](https://openai.com)
 - PII interception via [snifferjs](https://github.com/cyphunk/snifferjs)
-- Icons by [lucide.dev](https://lucide.dev/)
-- See [LICENSE](LICENSE) for full terms
+- Icons from [lucide.dev](https://lucide.dev/)
+- Licensed under [MIT](LICENSE)
 
 ---
+
+## About Confident Security
+
+[Confident Security](https://confident.security/) helps organizations solve the hardest privacy and security challenges, from preventing breaches to building cutting-edge privacy products.  
+**If you care about privacy for your company, clients, or product, [reach out to Sam Krystal](https://confident.security/)** and let's build the future of private tech together!
+
