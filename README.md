@@ -1,17 +1,31 @@
 
 # Jabberwocky
 
+![Jabberwocky Hero Dashboard](screenshots/dashboard-on.png)
+
 > **Project repo name:** _Please rename this repository to `Jabberwocky` on GitHub for contest eligibility and clarity!_
 
 ## Overview
-
-![Jabberwocky Logo](screenshots/dashboard-on.png)
 
 Jabberwocky is a privacy-first utility that intercepts and obfuscates personally identifiable information (PII) from your browser—before it can leave your computer. Inspired by the recent changes to Chromium (June 2024) that broke traditional ad blockers and privacy extensions, Jabberwocky aims to fill the gap with a transparent, 100% local solution.
 
 **Built with:**  
 - [Lovable](https://lovable.dev/) (AI-powered app builder)  
 - OpenAI (for rapid prototyping and guidance)
+
+---
+
+## 🚀 Demo
+
+<!-- Replace `demo.gif` with your actual demo GIF file after creating it! -->
+![Jabberwocky Demo](screenshots/demo.gif)
+
+**How to make this demo GIF:**
+1. **Record** your screen (try QuickTime on Mac, Xbox Game Bar/ShareX on Windows, Peek on Linux).
+2. **Show key features:** Toggle protection on/off, let logs stream in, export CSV, clear log, open extension modal.
+3. **Convert** the video `.mp4` to GIF using [ezgif.com](https://ezgif.com/video-to-gif/) or similar. Trim/crop as needed.
+4. **Save** as `screenshots/demo.gif` and commit to your repo.
+5. Update this README to show your real GIF!
 
 ---
 
@@ -23,6 +37,49 @@ Jabberwocky is a privacy-first utility that intercepts and obfuscates personally
 - **Export and Clear Logs**: Download CSV or clear log at any time.
 - **Beautiful UI**: Fully responsive, modern look.
 - **100% Local**: No cloud, no login, no tracking.
+
+---
+
+## Privacy Threats Jabberwocky Prevents
+
+- Browser fingerprinting (userAgent, navigator)
+- Geolocation data leaks (window.location, APIs)
+- Cookie/session hijacking or accidental server leaks
+- Form data sniffing (POSTed emails, real names, tokens)
+- Analytics/tracker access to unique identifiers
+- Unintended third-party POST/GET transmission of PII
+- Leaky referer headers exposing where you came from
+- Language/locale profiling to deduce identity or region
+- Device/OS fingerprinting
+
+---
+
+## Future-Proof & Extensible
+
+- Extend to new PII types as threats arise (add `snifferjs` listeners)
+- User-selectable shield levels (strict/medium/custom)
+- Custom spoofing rules by category (e.g., force cookies → anonymous)
+- Supports new browsers (Chrome, Edge—could add more)
+- Could power accessibility/privacy content overlays
+- Easily add logging for new sensitive fields (phone, address, biometrics)
+
+---
+
+## Next Steps: Full Functionality & Extension
+
+**Snifferjs Integration Checklist**
+- [ ] Install `snifferjs` (`npm install snifferjs`)
+- [ ] Import and initialize snifferjs as early as possible
+- [ ] Replace `src/lib/snifferjs-mock.ts` with real snifferjs event listeners
+- [ ] Map snifferjs events to `InterceptRecord` format
+- [ ] Test with different types of outbound PII
+
+**Make a Chrome/Edge Extension**
+- [ ] Add a valid `manifest.json` (Manifest V3)
+- [ ] Grant permissions for scripts, API interception
+- [ ] Set this React dashboard as the popup/option page
+- [ ] Test extension in dev mode (`chrome://extensions`)
+- [ ] Package and (optionally) submit to extension store
 
 ---
 
@@ -50,10 +107,10 @@ Jabberwocky is a privacy-first utility that intercepts and obfuscates personally
 
 Created in days using [Lovable](https://lovable.dev/) with the help of OpenAI’s code-completion and chat feature:
 
-- **UI design**: Lovable + Tailwind + shadcn/ui library
-- **OpenAI**: Used to suggest React patterns, design strategies, and to break development into manageable steps.
-- **Rapid iteration**: Lovable’s chat-based “AI edit” workflow handled boilerplate, refactors, and even layout fine-tuning live.
-- **Integration discovery**: Lovable/OpenAI were used to plan the snifferjs integration below.
+- **UI design:** Lovable + Tailwind + shadcn/ui library
+- **OpenAI:** Used to suggest React patterns, design strategies, and to break development into manageable steps.
+- **Rapid iteration:** Lovable’s chat-based “AI edit” workflow handled boilerplate, refactors, and even layout fine-tuning live.
+- **Integration discovery:** Lovable/OpenAI were used to plan the snifferjs integration below.
 
 _See full history and code conversations on Lovable._
 
@@ -125,4 +182,3 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 Feel free to open issues or reach out via [Lovable](https://lovable.dev).
 
 ---
-
