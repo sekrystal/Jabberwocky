@@ -202,9 +202,6 @@ Use Visual Studio Code or GitHub Desktop—both support installing and running p
 ---
 
 ## Even Cooler Work
-
-Follow us on Twitter/X for privacy insights and updates: [@confident_sec](https://x.com/confident_sec)
-
-Confident Security creates groundbreaking solutions at the intersection of AI and privacy. We believe data protection should be provable, practical, and easy to use—whether you're building next-gen privacy products or worried about your personal data.  
+I work at [Confident Security](https://confident.security/), we're a provably private AI solution that allows you to use any AI model without having your data retained. We believe data protection should be provable, practical, and easy to use. If you've got a popular AI model, lots of GPUs, and care about your customers, give me a holler!
 <br>
-Want to see the future of privacy in action? Join us and keep up with what’s next!
+Follow us on Twitter/X for privacy insights and updates: [@confident_sec](https://x.com/confident_sec)
