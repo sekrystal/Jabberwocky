@@ -5,7 +5,19 @@
 
 ---
 
-![Jabberwocky in action](screenshots/gifdemo.gif)
+<!-- Hero banner with the quadrant layout and demo (remove old gif reference) -->
+<p align="center">
+  <img src="screenshots/dashboard-on.png" width="300" alt="Dashboard quadrant 1" />
+  <img src="screenshots/dashboard-off.png" width="300" alt="Dashboard quadrant 2" />
+  <img src="screenshots/popup-modal.png" width="300" alt="Quadrant 3 - Extension Popup" />
+  <img src="screenshots/Plugin Modal.png" width="300" alt="Quadrant 4" />
+</p>
+
+---
+
+## Demo GIF Size Advice
+
+> ⚠️ **Best Practice:** For GitHub READMEs, keep GIF demo files under **5MB** for optimal loading and performance. Trim your GIF to ~10 seconds, use 500–800px width, and consider [EZGIF](https://ezgif.com/optimize) or similar tools to compress and resize. Swap your GIF file in `/screenshots` and update the README reference accordingly.
 
 ---
 
@@ -30,37 +42,23 @@ Jabberwocky intercepts and scrambles your browser’s PII (personally identifiab
 
 ## Screenshots
 
-All these images are included in `/screenshots` for reliable rendering.
+All images are shipped with this repo in `/screenshots` for reliable rendering.
 
 <table>
   <tr>
     <td>
-      <b>Dashboard - Protection ON</b><br>
-      <img src="screenshots/dashboard-on.png" width="300" alt="Dashboard - ON" />
+      <img src="screenshots/dashboard-on.png" width="300" />
     </td>
     <td>
-      <b>Dashboard - Protection OFF</b><br>
-      <img src="screenshots/dashboard-off.png" width="300" alt="Dashboard - OFF" />
+      <img src="screenshots/dashboard-off.png" width="300" />
     </td>
   </tr>
   <tr>
     <td>
-      <b>Extension Popup Modal</b><br>
-      <img src="screenshots/popup-modal.png" width="300" alt="Extension Modal" />
+      <img src="screenshots/popup-modal.png" width="300" />
     </td>
     <td>
-      <b>Dashboard Top</b><br>
-      <img src="screenshots/Dashboard%20Top.png" width="300" alt="Dashboard Top" />
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Dashboard Bottom</b><br>
-      <img src="screenshots/Dashboard%20Bottom.png" width="300" alt="Dashboard Bottom" />
-    </td>
-    <td>
-      <b>Plugin Modal</b><br>
-      <img src="screenshots/Plugin%20Modal.png" width="300" alt="Plugin Modal" />
+      <img src="screenshots/Plugin Modal.png" width="300" />
     </td>
   </tr>
 </table>
@@ -69,79 +67,71 @@ All these images are included in `/screenshots` for reliable rendering.
 
 ## Quick Start & Onboarding
 
-This section will get you running in just a few minutes! **You don’t need to be a developer: you can use GitHub, VSCode, or just a folder on your computer.**
+Getting started is easy, even if you've never used a terminal before.  
 
-### Option 1: Download or Clone
+### 1. Download the Code
 
-- **With GitHub:** Click the **Code** button on GitHub (top right), and “Download ZIP”. Unzip it.
-- **With Git (in terminal):**
-  ```sh
-  git clone <your-repo-url>
-  cd Jabberwocky
-  ```
-- **With GitHub Desktop:** Use the "Open with GitHub Desktop" button for a GUI experience.
+- On GitHub, click the **Code** button and “Download ZIP”. Unzip it.
 
-### Option 2: Install Dependencies
+### 2. Install Dependencies
 
-- **Graphical Tools:** If you use [Visual Studio Code](https://code.visualstudio.com/), open the folder. VSCode will suggest to “Install dependencies”. Click the button!
-- **Manual (terminal, optional):**
+- If you use [Visual Studio Code](https://code.visualstudio.com/), open this folder and click “Install dependencies” when prompted.  
+- Or in a terminal window (search for “Terminal” or “Command Prompt” in your OS):
+
   ```sh
   npm install
   ```
-  If you don't have Node.js, [download it here](https://nodejs.org/).
 
-### Option 3: Run Locally
+### 3. Run the App Locally
 
-- **VSCode:** Look for a “Run and Debug” button (or `npm run dev` in the inbuilt terminal).
-- **Manual (terminal, optional):**
+- In VSCode: click “Run and Debug” or open a terminal and type:
+
   ```sh
   npm run dev
   ```
-- Your browser should open at [http://localhost:5173](http://localhost:5173).
+
+- Navigate to [http://localhost:5173](http://localhost:5173) in your web browser.
 
 ---
 
 ## Install and Integrate `snifferjs`
 
-**Provide real PII interception with just a few easy steps!**
+Give your local app real PII protection:
 
 ### 1. Install snifferjs
 
-- **With VSCode GUI:** Open “Extensions”, search for “npm scripts”, and run “npm install snifferjs”.
-- **Or in a terminal:**
-  ```sh
-  npm install snifferjs
-  ```
+Open your terminal and type:
 
-### 2. Create the Integration File
+```sh
+npm install snifferjs
+```
 
-- Open the `/src/lib/` folder (create if missing)
-- **Make a new file** called `snifferjs.ts` and paste:
+### 2. Create the Integration
+
+- Go to the `/src/lib/` folder (create if missing),  
+- Make `snifferjs.ts`:
+
   ```ts
   // src/lib/snifferjs.ts
   import snifferjs from "snifferjs";
   snifferjs.patchAll();
   ```
-- This makes sure snifferjs protects you immediately on site/app load.
 
-### 3. Enable Sniffer in the App
+- In your main entry point (`src/main.tsx`), at the very top, add:
 
-- **Find your app’s main entry point** (`src/main.tsx`).
-- **Add this line at the very top:**
   ```ts
   import "./lib/snifferjs";
   ```
-- That's it! Jabberwocky will now intercept and scramble PII in real time.
+
+That's it—PII interception runs as soon as your app starts.
 
 ---
 
 ## How to Make a Browser Extension
 
-It's easy—just follow these steps! A ready-to-use manifest is provided below.
+You can turn Jabberwocky into a Chrome/Edge extension! Here’s a step-by-step, including a manifest you can copy:
 
-### 1. Create `manifest.json`
-
-Copy this file into your project root:
+### 1. Create `manifest.json` in your project root
 
 ```json
 {
@@ -175,54 +165,42 @@ Copy this file into your project root:
 }
 ```
 
-#### What do these fields mean?
-- `permissions`: Lets Jabberwocky access your tabs (to protect you).
-- `action`: Makes your app show up as the extension popup.
-- `content_scripts`: Tells the browser what to inject into each webpage.
-- `background`: Runs the service worker code.
-- `icons`: Sets the icons for your extension at various sizes.
+### 2. Patch snifferjs as Early As Possible
 
-### 2. Make Sure snifferjs Runs Immediately
+At the **TOP** of your content script (`content.js`):
 
-- **Add this line at the very top of your extension’s main file** (`content.js` or similar):
-  ```js
-  import snifferjs from "snifferjs";
-  snifferjs.patchAll();
-  ```
-  This makes privacy protection instant as soon as a page loads.
+```js
+import snifferjs from "snifferjs";
+snifferjs.patchAll();
+```
+This ensures privacy protection is active as soon as any webpage script runs.
 
-### 3. Use the Dashboard as Popup
+### 3. Load as an Unpacked Extension
 
-- Build your app (`npm run build`)
-- Set the extension’s popup to `index.html` or the correct build path.
-- Load it in Chrome:
-  - Go to `chrome://extensions`
-  - Enable “Developer mode”
-  - Click “Load unpacked” and select your `/dist` folder
+- Run `npm run build` to generate the `/dist` folder.
+- Go to `chrome://extensions`
+- Enable “Developer mode”
+- Click “Load unpacked” and select your `/dist` folder.
 
 ---
 
 ## Troubleshooting & FAQ
 
-**Images not showing up?**
-- Double-check that you’re using the screenshots shipped in `/screenshots` and your README uses the correct file names/spelling/casing.
+**Why aren't screenshots or images showing up?**  
+Check that your image filenames match those in the `/screenshots` folder (including case sensitivity).
 
-**Snifferjs not active?**
-- Make sure you followed step 3 in “Install and Integrate snifferjs” above.
-- Look at your browser console for warnings or errors.
+**snifferjs not active?**  
+Check your browser’s console for errors; ensure you followed the integration steps above.
 
-**Not sure how to use the Terminal?**
-- Try [GitHub Desktop](https://desktop.github.com/) or [Visual Studio Code](https://code.visualstudio.com/)—you can click buttons instead of typing commands!
-
-**Still stuck?**
-- Try restarting your computer, your browser, or deleting/reinstalling `node_modules`.
+**Not comfortable with the Terminal?**  
+Use GitHub Desktop or Visual Studio Code—you can click instead of type!
 
 ---
 
 ## Credits & License
 
 - **Author:** Sam Krystal
-- Built with [Lovable](https://lovable.dev) + [OpenAI](https://openai.com)
+- Built using Lovable
 - PII interception via [snifferjs](https://github.com/cyphunk/snifferjs)
 - Icons from [lucide.dev](https://lucide.dev/)
 - Licensed under [MIT](LICENSE)
