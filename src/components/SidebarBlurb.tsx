@@ -8,10 +8,10 @@ export default function SidebarBlurb() {
       <div>
         <span className="font-bold text-white/90">In June 2024, Google forced ad blockers and privacy extensions to stop working on Chromium (the engine behind Chrome, Edge, and others).</span>
         <br /><br />
-        Suddenly, most people lost meaningful control over their private data and PII flowing from their browser—even before it leaves their machine.
+        Overnight, most people lost meaningful control over their private data and PII flowing from their browser - all in the name of monetization.
         <br /><br />
         <span className="text-white/90 font-semibold">Jabberwocky</span> was built to prove you can scramble and intercept unencrypted PII (personally identifiable information) before it’s ever exposed—no tracking, no servers, privacy by default.<br />
-        Bring your own shield back, whatever Google breaks.
+        Here's your shield, protect your privacy.
       </div>
     </div>
   );
