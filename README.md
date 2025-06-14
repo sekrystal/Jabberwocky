@@ -1,4 +1,3 @@
-
 // Jabberwocky
 
 > _A privacy-first browser utility that intercepts and obfuscates PII directly in your browser—on your device only._
@@ -14,7 +13,10 @@
 
 ## Quick Start
 
-**Anyone can do it!**
+**Run the demo locally:**
+
+- Follow the install and run steps below. This demo works locally and demonstrates the UI and logs.
+- **Note:** The _real_ thing (live PII interception) also requires integration with `snifferjs` as described below!
 
 ### 1. Get the Code
 
@@ -42,25 +44,24 @@
 
 ## Screenshots & GIFs
 
-Add images/GIFs that show off Jabberwocky!
+Want to see what Jabberwocky looks like?  
+**Just add your images or GIFs inside the `/screenshots` folder, and they’ll show up in the homepage quadrant!**
 
-1. **Put your files in the `/screenshots` folder.**
-   - Supported: PNG, JPG, GIF (for animation demos).
-   - **Keep GIFs under ~5MB for fast loading!** (Trim with [EZGIF](https://ezgif.com/optimize) or similar.)
-2. **Reference your images below**  
-   - Example usage:
+Example usage (used on the homepage):
 
-```md
 <p align="center">
-  <img src="screenshots/your-demo.gif" width="400" alt="Screenshot description" />
+  <img src="screenshots/Dashboard Top.png" width="320" alt="Dashboard Top" />
+  <img src="screenshots/Dashboard Bottom.png" width="320" alt="Dashboard Bottom" />
+  <img src="screenshots/PII Download.png" width="320" alt="PII Download" />
+  <img src="screenshots/Plugin Modal.png" width="320" alt="Plugin Modal" />
 </p>
-```
 
 | Example           | Suggested Usage              |
 |-------------------|-----------------------------|
-| dashboard.png     | Main dashboard              |
-| demo.gif          | Animated usage demo         |
-| popup-modal.png   | The browser extension popup |
+| Dashboard Top.png | Main dashboard (top)         |
+| Dashboard Bottom.png | Main dashboard (bottom)   |
+| PII Download.png  | Download intercepted PII demo|
+| Plugin Modal.png  | The browser extension popup  |
 
 ---
 
@@ -168,4 +169,3 @@ So much so that I work at [Confident Security](https://confident.security)—we 
 
 **Follow us for privacy news and updates:**  
 👉 [@confident_sec on Twitter/X](https://x.com/confident_sec)
-
