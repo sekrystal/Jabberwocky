@@ -1,87 +1,38 @@
-# Jabberwocky
 
-> _A privacy-first browser utility that intercepts and obfuscates PII directly on your device._
+// Jabberwocky
 
----
-
-<!-- Hero banner using one of the user's PNGs -->
-<p align="center">
-  <img src="screenshots/dashboard-on.png" width="400" alt="Jabberwocky Dashboard screenshot" />
-</p>
+> _A privacy-first browser utility that intercepts and obfuscates PII directly in your browser—on your device only._
 
 ---
 
 ## About
 
-**Jabberwocky** is a powerful privacy tool that intercepts and scrambles your personal data right in your browser—before it ever leaves your device. Designed for effortless use and maximum local privacy, it combines accessibility with true peace of mind.  
-<br>
-_This project was created for the [Lovable competition](https://lovable.dev)!_
+**Jabberwocky** is a next-level browser privacy shield. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks.  
+**This project was made for the [Lovable Competition](https://lovable.dev)!**
 
 ---
 
-## Demo GIF Size Advice
+## Quick Start
 
-> ⚠️ **Best Practice:** For GitHub READMEs, keep GIF demo files under **5MB** for optimal loading and performance. Trim your GIF to ~10 seconds, use 500–800px width, and consider [EZGIF](https://ezgif.com/optimize) or similar tools to compress and resize. Swap your GIF file in `/screenshots` and update the README reference accordingly.
+**Anyone can do it!**
 
----
+### 1. Get the Code
 
-## Table of Contents
-
-- [About](#about)
-- [Screenshots](#screenshots)
-- [Quick Start & Onboarding](#quick-start--onboarding)
-- [Install and Integrate `snifferjs`](#install-and-integrate-snifferjs)
-- [How to Make a Browser Extension](#how-to-make-a-browser-extension)
-- [Troubleshooting & FAQ](#troubleshooting--faq)
-- [Credits & License](#credits--license)
-- [Even Cooler Work](#even-cooler-work)
-
----
-
-## Screenshots
-
-All images are shipped with this repo in `/screenshots` for reliable rendering.
-
-<table>
-  <tr>
-    <td>
-      <img src="screenshots/dashboard-on.png" width="300" alt="Dashboard Protection On" />
-    </td>
-    <td>
-      <img src="screenshots/dashboard-off.png" width="300" alt="Dashboard Protection Off" />
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img src="screenshots/popup-modal.png" width="300" alt="Extension Popup Modal" />
-    </td>
-    <td>
-    </td>
-  </tr>
-</table>
-
----
-
-## Quick Start & Onboarding
-
-Getting started is easy—even if you've never used a terminal before!
-
-### 1. Download the Code
-
-- On GitHub, click the **Code** button and select _“Download ZIP”_. Unzip it.
+- Click **Code** (top right) and choose _“Download ZIP”_.
+- Unzip it anywhere.
 
 ### 2. Install Dependencies
 
-- **Recommended:** Use [Visual Studio Code](https://code.visualstudio.com/).  
-  Open this folder and click “Install dependencies” when prompted.
-- **Or:** Open Terminal/Command Prompt, then run:
+- **Best:** Open this folder in [Visual Studio Code](https://code.visualstudio.com/).
+- Or, open a terminal window there and run:
   ```sh
   npm install
   ```
 
-### 3. Run the App Locally
+### 3. Run It Locally
 
-- Still in VSCode: click “Run and Debug” or run in terminal:
+- In VSCode: click “Run and Debug” _or_
+- In terminal:
   ```sh
   npm run dev
   ```
@@ -89,120 +40,132 @@ Getting started is easy—even if you've never used a terminal before!
 
 ---
 
-## Install and Integrate `snifferjs`
+## Screenshots & GIFs
 
-Give your local app real PII protection:
+Add images/GIFs that show off Jabberwocky!
 
-### 1. Install snifferjs
+1. **Put your files in the `/screenshots` folder.**
+   - Supported: PNG, JPG, GIF (for animation demos).
+   - **Keep GIFs under ~5MB for fast loading!** (Trim with [EZGIF](https://ezgif.com/optimize) or similar.)
+2. **Reference your images below**  
+   - Example usage:
 
-```sh
-npm install snifferjs
+```md
+<p align="center">
+  <img src="screenshots/your-demo.gif" width="400" alt="Screenshot description" />
+</p>
 ```
 
-### 2. Integrate snifferjs
-
-- In the `/src/lib/` folder (create if missing), make a file called `snifferjs.ts`:
-
-  ```ts
-  // src/lib/snifferjs.ts
-  import snifferjs from "snifferjs";
-  snifferjs.patchAll();
-  ```
-
-- In your main entry point (`src/main.tsx`), add at the VERY TOP:
-
-  ```ts
-  import "./lib/snifferjs";
-  ```
-
-That’s it—protection is enabled automatically when your app starts.
+| Example           | Suggested Usage              |
+|-------------------|-----------------------------|
+| dashboard.png     | Main dashboard              |
+| demo.gif          | Animated usage demo         |
+| popup-modal.png   | The browser extension popup |
 
 ---
 
-## How to Make a Browser Extension
+## Table of Contents
 
-You can turn Jabberwocky into a Chrome/Edge extension! Here’s how:
+- [About](#about)
+- [Screenshots & GIFs](#screenshots--gifs)
+- [Quick Start](#quick-start)
+- [Install and Integrate `snifferjs`](#install-and-integrate-snifferjs)
+- [Making a Browser Extension](#making-a-browser-extension)
+- [Troubleshooting & FAQ](#troubleshooting--faq)
+- [Credits & License](#credits--license)
+- [Even Cooler Work](#even-cooler-work)
 
-### 1. Use this manifest.json (copy-paste as is)
+---
 
-Create a `manifest.json` in your project root **exactly like this**:
+## Install and Integrate `snifferjs`
 
-```json
-{
-  "manifest_version": 3,
-  "name": "Jabberwocky",
-  "version": "1.0.0",
-  "description": "A privacy tool to intercept and shield PII.",
-  "permissions": ["activeTab", "storage", "scripting"],
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": {
-      "16": "images/icon16.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
-    }
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "icons": {
-    "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
-  }
-}
-```
+Give your app real PII protection:
+1. `npm install snifferjs`
+2. Create `src/lib/snifferjs.ts`:
+   ```ts
+   import snifferjs from "snifferjs";
+   snifferjs.patchAll();
+   ```
+3. At the VERY TOP of `src/main.tsx`:  
+   `import "./lib/snifferjs";`
 
-### 2. Patch snifferjs *immediately* in your content script
+Done! Now every session is protected.
 
-At the very top of your `content.js` file, add:
+---
 
-```js
-import snifferjs from "snifferjs";
-snifferjs.patchAll();
-```
-> This ensures Jabberwocky privacy protection runs before any page scripts can capture your data.
+## Making a Browser Extension
 
-### 3. Load as an Unpacked Extension
+Convert Jabberwocky to a Chrome/Edge extension:
 
-- Run `npm run build` to generate your `/dist` folder.
-- In your browser go to `chrome://extensions`
-- Enable “Developer mode”
-- Click “Load unpacked” and select your `/dist` folder.
+1. **Add This manifest.json** to root:
+   ```json
+   {
+     "manifest_version": 3,
+     "name": "Jabberwocky",
+     "version": "1.0.0",
+     "description": "A privacy tool to intercept and shield PII.",
+     "permissions": ["activeTab", "storage", "scripting"],
+     "action": {
+       "default_popup": "index.html",
+       "default_icon": {
+         "16": "images/icon16.png",
+         "48": "images/icon48.png",
+         "128": "images/icon128.png"
+       }
+     },
+     "content_scripts": [
+       {
+         "matches": ["<all_urls>"],
+         "js": ["content.js"]
+       }
+     ],
+     "background": {
+       "service_worker": "background.js"
+     },
+     "icons": {
+       "16": "images/icon16.png",
+       "48": "images/icon48.png",
+       "128": "images/icon128.png"
+     }
+   }
+   ```
+2. **Patch snifferjs at the top of `content.js`:**
+   ```js
+   import snifferjs from "snifferjs";
+   snifferjs.patchAll();
+   ```
+3. **Load in chrome://extensions:**  
+   - Enable “Developer mode”
+   - “Load unpacked” &rarr; `/dist` folder
 
 ---
 
 ## Troubleshooting & FAQ
 
-**Why don’t screenshots or images show up?**  
-Check that your image filenames exactly match those in the `/screenshots` folder.
-
-**snifferjs not active in your browser?**  
-Check your browser’s console for errors; make sure you followed the extension setup steps closely.
-
-**Not comfortable with the Terminal?**  
-Use Visual Studio Code or GitHub Desktop—both support installing and running projects with just a few clicks!
+- **Screenshots not showing?**  
+  Check spelling and extension. Files MUST be in `/screenshots`.
+- **snifferjs not active?**  
+  Check browser console for errors; confirm extension steps.
+- **Afraid of the terminal?**  
+  Use VSCode or GitHub Desktop to install/run things with click buttons!
 
 ---
 
 ## Credits & License
 
-- **Author:** Sam Krystal
-- Built using Lovable
-- PII interception via [snifferjs](https://github.com/cyphunk/snifferjs)
-- Icons from [lucide.dev](https://lucide.dev/)
-- Licensed under [MIT](LICENSE)
+- **Author:** Sam Krystal  
+- Built with Lovable  
+- Uses [snifferjs](https://github.com/cyphunk/snifferjs) for advanced PII interception  
+- Icons: [lucide.dev](https://lucide.dev/)  
+- License: [MIT](LICENSE)
 
 ---
 
 ## Even Cooler Work
-I work at [Confident Security](https://confident.security/), we're a provably private AI solution that allows you to use any AI model without having your data retained. We believe data protection should be provable, practical, and easy to use. If you've got a popular AI model, lots of GPUs, and care about your customers, give me a holler!
-<br>
-<br>
-Follow us on Twitter/X for privacy insights and updates: [@confident_sec](https://x.com/confident_sec)
+
+I care deeply about data privacy.  
+So much so that I work at [Confident Security](https://confident.security)—we build provably private AI. If you’re worried about your data privacy and security, or you’re building an AI product and want to explore partnerships, check us out!
+
+**Follow us for privacy news and updates:**  
+👉 [@confident_sec on Twitter/X](https://x.com/confident_sec)
+
