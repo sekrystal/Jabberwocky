@@ -11,7 +11,7 @@
 
 ## About
 
-**Jabberwocky** is a browser privacy extension. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks. 
+**Jabberwocky** is a browser privacy extension. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks.
 
 **This project was made for the [Lovable AI Showdown](https://aishowdown.lovable.app/)!**
 
@@ -49,10 +49,9 @@ _(The “demo” is the local app UI. For real intercept support, see the integr
 
 ---
 
-## Screenshots:
+## Screenshots
 
-Want to see what Jabberwocky looks like?  
-Example usage screenshots—in a quadrant layout—below:
+Here’s a preview of Jabberwocky in action:
 
 <p align="center">
   <img src="screenshots/Dashboard Top.png" width="320" alt="Dashboard Top" />
@@ -66,13 +65,12 @@ Example usage screenshots—in a quadrant layout—below:
 ## Table of Contents
 
 - [About](#about)
-- [Screenshots & GIFs](#screenshots--gifs)
+- [Screenshots](#screenshots)
 - [Quick Start](#quick-start)
 - [Install and Integrate `snifferjs`](#install-and-integrate-snifferjs)
 - [Making a Browser Extension](#making-a-browser-extension)
 - [Troubleshooting & FAQ](#troubleshooting--faq)
 - [Credits & License](#credits--license)
-- [Even Cooler Work](#even-cooler-work)
 
 ---
 
@@ -94,48 +92,90 @@ Done! Now every session is protected.
 
 ## Making a Browser Extension
 
-Convert Jabberwocky to a Chrome/Edge extension:
+Want Jabberwocky as a Chrome/Edge extension?  
+_Follow these steps for a smooth install:_
 
-1. **Add This manifest.json** to root:
-   ```json
-   {
-     "manifest_version": 3,
-     "name": "Jabberwocky",
-     "version": "1.0.0",
-     "description": "A privacy tool to intercept and shield PII.",
-     "permissions": ["activeTab", "storage", "scripting"],
-     "action": {
-       "default_popup": "index.html",
-       "default_icon": {
-         "16": "images/icon16.png",
-         "48": "images/icon48.png",
-         "128": "images/icon128.png"
-       }
-     },
-     "content_scripts": [
-       {
-         "matches": ["<all_urls>"],
-         "js": ["content.js"]
-       }
-     ],
-     "background": {
-       "service_worker": "background.js"
-     },
-     "icons": {
-       "16": "images/icon16.png",
-       "48": "images/icon48.png",
-       "128": "images/icon128.png"
-     }
-   }
-   ```
-2. **Patch snifferjs at the top of `content.js`:**
-   ```js
-   import snifferjs from "snifferjs";
-   snifferjs.patchAll();
-   ```
-3. **Load in chrome://extensions:**  
-   - Enable “Developer mode”
-   - “Load unpacked” → `/dist` folder
+### 1. Build the App
+
+In your project directory, run:
+```sh
+npm run build
+```
+
+This will generate a `/dist` folder containing everything Chrome needs.
+
+---
+
+### 2. Add a Manifest
+
+**In your project root folder**, create a file called `manifest.json` **(not inside src)**:
+
+```json
+{
+  "manifest_version": 3,
+  "name": "Jabberwocky",
+  "version": "1.0.0",
+  "description": "A privacy tool to intercept and shield PII.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
+```
+
+---
+
+### 3. Patch snifferjs for Browser Extension
+
+Create `content.js` in `/dist` (or copy and edit from your Vite build outputs):
+
+```js
+import snifferjs from "snifferjs";
+snifferjs.patchAll();
+```
+
+> _Tip:_ You can also bundle this logic with your Vite build pipeline if you're advanced.
+
+---
+
+### 4. (Optional) Add Extension Icons
+
+- Place your icon images (icon16.png, icon48.png, icon128.png) inside a new `/dist/images/` directory.
+- Update their references in `manifest.json` above if they differ.
+
+---
+
+### 5. Load the Extension in Chrome
+
+1. Open Chrome and go to `chrome://extensions/`.
+2. Turn ON **Developer mode** (toggle in top right).
+3. Click **Load unpacked**.
+4. Select your `/dist` folder (after it contains all the files above).
+5. Jabberwocky should now appear in your extensions list! Click its puzzle piece icon to run.
+
+**Common Issues/Tips:**
+- Make sure you select the **built `/dist` folder**, not `/src` or root.
+- If icons or popups don't appear, double check file locations and manifest paths.
+- If you update the code, rebuild (`npm run build`) and re-load the extension.
 
 ---
 
@@ -158,9 +198,27 @@ Convert Jabberwocky to a Chrome/Edge extension:
 
 ---
 
-## Even Cooler Work
-I work at [Confident Security](https://confident.security)—we build provably private AI. If you've got a popular AI model, lots of compute, and care about your users, give me a holler!
+## About Confident Security
+
+Work at [Confident Security](https://confident.security)—we build provably private AI.  
+If you've got a popular AI model, lots of compute, and care about your users, give me a holler!
 
 **Follow us for privacy news and updates:**  
 👉 [@confident_sec on Twitter/X](https://x.com/confident_sec)
+
+---
+
+## Suggestions Before Making Your Repo Public
+
+- 📋 **Add a LICENSE file** (MIT is a great default!).
+- 🙌 **Invite contributions**:  
+  - Add a `CONTRIBUTING.md` for guidelines.
+  - Consider a `CODE_OF_CONDUCT.md`.
+- 🛡️ **Add shields/badges**:  
+  Try [shields.io](https://shields.io/) for “MIT License”, “PRs Welcome”, etc.
+- ✨ **Write a project description** and homepage link in the GitHub repo settings for discoverability.
+- 📚 **Consider a demo GIF in your repo’s header** (already in README).
+- 🧹 **Do a final spellcheck and README formatting pass.**
+
+Ready to go public! 🚀
 
