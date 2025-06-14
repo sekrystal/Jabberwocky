@@ -2,26 +2,32 @@
 import * as React from "react";
 import type { InterceptRecord } from "../lib/snifferjs-mock";
 
-// Helper for a Matrix "binary stream"
+// User-friendly BinaryDivider: faded, subtle, with a tooltip for clarity.
 function BinaryDivider() {
   // Fixed repeated pattern for performance; can be randomized if desired
   const binary =
     "01010110010100111011000101101001010110101010101100010101101010110110101101";
   return (
     <tr>
-      <td colSpan={4} className="px-0 py-1 bg-black">
-        <div className="w-full flex items-center justify-center">
+      <td colSpan={4} className="px-0 py-1 bg-black group hover:bg-gray-900 transition-colors">
+        <div className="w-full flex items-center justify-center relative">
           <span
-            className="font-mono text-xs text-red-500 tracking-wider opacity-80 select-none"
+            className="font-mono text-xs tracking-wider select-none"
             style={{
+              color: "#67686b",
+              opacity: 0.28,
               whiteSpace: "nowrap",
               letterSpacing: "2px",
               userSelect: "none",
-              fontWeight: 700,
+              fontWeight: 600,
+              pointerEvents: "auto",
+              transition: "opacity 0.12s"
             }}
             aria-hidden="true"
+            tabIndex={0}
+            title="Binary boundary – intercepted events are separated for clarity."
           >
-            {binary.repeat(5).slice(0, 80)}
+            {binary.repeat(4).slice(0, 68)}
           </span>
         </div>
       </td>
@@ -74,7 +80,7 @@ export default function PiiInterceptTable({ records }: Props) {
                   {rec.replaced}
                 </td>
               </tr>,
-              // Insert a binary divider after every row except last
+              // Insert a faded binary divider after every row except last
               idx < records.length - 1 ? <BinaryDivider key={`divider-${idx}`} /> : null,
             ])
           )}

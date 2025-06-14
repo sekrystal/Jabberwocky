@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import PiiToggle from "../components/PiiToggle";
 import PiiInterceptTable from "../components/PiiInterceptTable";
@@ -6,6 +7,7 @@ import { ShieldCheck, Bug, Info, Download, Trash2, Shield, Check } from "lucide-
 import HelpPopover from "../components/HelpPopover";
 import MatrixBackground from "../components/MatrixBackground";
 
+// DATA_TYPES same as before
 const DATA_TYPES = [
   { name: "navigator properties", desc: "userAgent, language, device memory, etc." },
   { name: "document.cookie", desc: "cookies sent by client" },
@@ -36,8 +38,6 @@ function downloadAsCSV(records: InterceptRecord[]) {
 export default function Index() {
   const [enabled, setEnabled] = React.useState(true);
   const [records, setRecords] = React.useState<InterceptRecord[]>([]);
-
-  // Animate card opening
   const mainCardRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -52,32 +52,44 @@ export default function Index() {
     };
   }, []);
 
-  // Hero/Intro copy - refined for elegance and clarity
+  // Redesigned Hero/Intro copy - more elegant, concise, privacy-first
   const hero = (
-    <div className="flex-1">
-      <h1 className="text-3xl md:text-4xl font-extrabold flex items-center gap-3 text-white">
+    <div className="flex-1 text-center">
+      <h1 className="text-3xl md:text-4xl font-extrabold flex items-center justify-center gap-3 text-white">
         <Shield className="text-red-500" size={36} />
         PII & Device Info Intercept Shield
       </h1>
-      <p className="mt-2 md:mt-3 max-w-2xl text-white/90 text-lg leading-relaxed">
-        <span className="inline-block font-bold text-red-400 bg-white/[0.05] rounded px-2 py-0.5 mr-2">Private Demo</span>
-        Stops unencrypted personal or device info from leaking out—scrambles outgoing data before it leaves your browser.
-        <br className="hidden md:inline" />
-        <span className="block mt-2 text-sm text-gray-300">
-          <span className="font-semibold text-white">No login.</span> <span className="text-red-400">No tracking.</span> <span className="font-semibold text-white">Everything happens 100% on your device.</span>
+      <p className="mt-3 max-w-2xl mx-auto text-white/90 text-lg leading-relaxed font-medium">
+        <span className="inline-block font-extrabold text-red-400 bg-white/[0.05] rounded px-2 py-0.5 mr-2 tracking-wide">Private Demo</span>
+        Instantly scrambles sensitive personal and device info before it can ever leave your browser.
+        <span className="block mt-1.5 text-base text-gray-300 font-normal">
+          No login, no tracking, no accounts—100% private and local.
         </span>
       </p>
     </div>
   );
 
-  // Responsive sidebar navigation (mock: as a vertical panel)
+  // Side project rationale blurb for the sidebar
+  const sidebarBlurb = (
+    <div className="mt-8 bg-[#151516] rounded-lg border border-red-900/40 p-4 text-xs text-left text-gray-400 shadow-inner font-medium">
+      <div className="font-semibold text-sm text-red-400 mb-2">
+        Why I built this
+      </div>
+      <div>
+        As of June 2024, Google forced ad blockers and privacy extensions to stop working on Chromium browsers. Most users lost meaningful control over what leaks from their browser.<br /><br />
+        <span className="text-white/90 font-semibold">This project</span> proves it's possible to intercept and scramble unencrypted data—giving privacy back, with zero tracking or server dependency.<br /><br />
+        Bring your privacy shield to every session, no matter what Google changes.
+      </div>
+    </div>
+  );
+
   return (
     <div className="relative min-h-screen flex text-white transition-colors duration-300 bg-black">
-      {/* Matrix background, full-viewport, behind all content */}
+      {/* Matrix background, full-viewport */}
       <MatrixBackground />
 
       {/* Sidebar mock */}
-      <aside className="hidden md:flex flex-col w-64 bg-[#191c23] border-r border-red-900 border-opacity-60 p-8 min-h-screen shadow-xl z-10">
+      <aside className="hidden md:flex flex-col w-64 bg-[#131314] border-r border-red-900 border-opacity-60 p-8 min-h-screen shadow-xl z-10">
         <div className="flex flex-col items-center justify-center gap-4">
           <Shield size={52} className="text-red-500 mb-2 drop-shadow" />
           <h1 className="text-2xl font-bold text-center text-white">PII Intercept Shield</h1>
@@ -85,6 +97,8 @@ export default function Index() {
             Your browser privacy—<span className="font-semibold text-red-400">supercharged</span>.
           </p>
         </div>
+        {/* Sidebar blurb about Google/ad blockers */}
+        {sidebarBlurb}
         <div className="mt-10 text-xs text-gray-400 space-y-2">
           <div className="flex items-center gap-2">
             <Check className="text-red-400" size={16} />
@@ -115,15 +129,23 @@ export default function Index() {
 
         <div
           ref={mainCardRef}
-          className="w-full max-w-4xl mx-auto bg-gradient-to-tr from-[#18181b] via-[#222226] to-[#1a1a1d] rounded-2xl shadow-2xl border border-red-900 border-opacity-50 p-7 sm:p-10 space-y-8 relative animate-fade-in"
+          className="w-full max-w-4xl mx-auto bg-gradient-to-tr from-[#0b0b0d] via-[#18181b] to-[#17181a] rounded-2xl shadow-2xl border border-red-900 border-opacity-50 p-7 sm:p-10 space-y-8 relative animate-fade-in"
         >
-          {/* Refined Header + Toggle Layout */}
+          {/* Hero section */}
           <section className="flex flex-col gap-4 pb-2 w-full">
             {hero}
           </section>
 
+          {/* Live intercept title & toggle */}
+          <section className="flex flex-col items-center gap-2 w-full mb-2">
+            <h3 className="font-semibold text-xl text-white text-center mb-1">Live PII Intercept Log</h3>
+            <div className="flex flex-row gap-3 items-center justify-center">
+              <PiiToggle enabled={enabled} onToggle={setEnabled} showClickHint />
+            </div>
+          </section>
+
           {/* What is protected card */}
-          <section className="w-full border border-gray-800 rounded-lg bg-gradient-to-br from-[#18181b]/90 to-[#232324]/95 p-6 mb-4 shadow-md">
+          <section className="w-full border border-gray-900 rounded-lg bg-gradient-to-br from-[#101012]/95 to-[#1b1b1e]/97 p-6 mb-4 shadow-md">
             <h2 className="font-bold text-xl flex gap-2 items-center text-white">
               <Info className="text-red-500" size={22} />
               What is protected?
@@ -140,16 +162,6 @@ export default function Index() {
 
           {/* Live Intercept Log */}
           <section className="w-full">
-            <div className="flex flex-col gap-2 mb-2">
-              <h3 className="font-semibold text-xl text-white mb-1">Live PII Intercept Log</h3>
-              <div className="flex items-center gap-3">
-                <PiiToggle
-                  enabled={enabled}
-                  onToggle={setEnabled}
-                  showClickHint
-                />
-              </div>
-            </div>
             <PiiInterceptTable records={records} />
           </section>
         </div>
