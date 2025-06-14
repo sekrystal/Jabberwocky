@@ -1,130 +1,166 @@
+
 # Jabberwocky
 
-A privacy-first browser utility that intercepts and obfuscates PII directly on your device.  
-Author: **Sam Krystal**  
-_Built with Lovable, OpenAI, and snifferjs (integration ready)_
+> _A privacy-first browser utility that intercepts and obfuscates PII directly on your device._
+
+**Author:** Sam Krystal
 
 ---
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
+- [Project Overview](#project-overview)
 - [Screenshots](#screenshots)
-- [Quick Start](#quick-start)
 - [Demo GIF](#demo-gif)
-- [Functional Integration (snifferjs)](#functional-integration-snifferjs)
-- [Making It a Browser Extension](#making-it-a-browser-extension)
+- [Quick Start (Recommended)](#quick-start-recommended)
+  - [Prerequisites](#prerequisites)
+  - [Step 1: Clone the Repo](#step-1-clone-the-repo)
+  - [Step 2: Install Dependencies](#step-2-install-dependencies)
+  - [Step 3: Run Locally](#step-3-run-locally)
+- [Functional Integration: Using snifferjs](#functional-integration-using-snifferjs)
+  - [Install and Setup](#install-and-setup)
+  - [Implement in Code](#implement-in-code)
+  - [Connect Real Events to UI](#connect-real-events-to-ui)
+- [Make a Browser Extension](#make-a-browser-extension)
 - [Troubleshooting & FAQ](#troubleshooting--faq)
 - [Credits & License](#credits--license)
-
 ---
 
-## Overview
+## Project Overview
 
-Jabberwocky intercepts and obfuscates personally identifiable information (PII) before it ever leaves your browser—no cloud, no tracking.  
-_Designed for the new privacy challenges post-Chromium June 2024._
-
----
-
-## Features
-
-- **Real-time PII log:** See exactly what gets intercepted and scrambled.
-- **Toggle Protection:** Instantly turn shielding on/off.
-- **Detailed listing:** Visualizes types (userAgent, cookies, POST data, etc).
-- **Export or Clear logs:** Download CSV or clear at any time.
-- **Fully Local:** 100% client-side, no remote code or analytics.
-- **Beautiful UI:** Responsive, modern design.
+Jabberwocky intercepts and scrambles your browser’s PII (personally identifiable information) — _before it ever leaves your machine_. There is **no cloud**, no tracking, and everything runs 100% locally.
 
 ---
 
 ## Screenshots
 
-> _All images should be in the `/screenshots/` folder for best compatibility._
+All images are shipped with this repo in `/screenshots` for reliable rendering.
 
-**Hero Dashboard (Protection ON):**  
+### Dashboard (Protection ON)
 ![Dashboard ON](screenshots/dashboard-on.png)
 
-**Dashboard (Protection OFF):**  
+### Dashboard (Protection OFF)
 ![Dashboard OFF](screenshots/dashboard-off.png)
 
-**Extension Popup Preview:**  
+### Extension Popup Preview
 ![Extension Modal](screenshots/popup-modal.png)
 
-<details>
-<summary>How to add your own:</summary>
+#### Additional Screenshots
 
-Place `.png` or `.jpg` files in `/screenshots/`, then reference in markdown:
-```
-![Description](screenshots/your-image.png)
-```
-</details>
-
----
-
-## Quick Start
-
-```sh
-npm install
-npm run dev
-```
-- Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-#### Build for production:
-```sh
-npm run build
-```
-
-#### Need help?
-See [Troubleshooting & FAQ](#troubleshooting--faq) below.
+- **Dashboard Top:**  
+  ![Dashboard Top](screenshots/Dashboard%20Top.png)
+- **Dashboard Bottom:**  
+  ![Dashboard Bottom](screenshots/Dashboard%20Bottom.png)
+- **Plugin Modal:**  
+  ![Plugin Modal](screenshots/Plugin%20Modal.png)
 
 ---
 
 ## Demo GIF
 
-> Record your screen, show toggling/log/export.  
-> Save as `screenshots/demo.gif`:
+**See Jabberwocky in action (toggle, live log, export/clear):**
 
-```md
-![Jabberwocky Demo](screenshots/demo.gif)
-```
+![Jabberwocky Demo](screenshots/gifdemo.gif)
 
 ---
 
-## Functional Integration (snifferjs)
+## Quick Start (Recommended)
 
-### 1. Install snifferjs
+This section will get you running in <3 minutes.
+
+### Prerequisites
+
+- Modern version of [Node.js](https://nodejs.org/) (20.x+ recommended)
+- [Git](https://git-scm.com/downloads)
+
+---
+
+### Step 1: Clone the Repo
 
 ```sh
-npm install snifferjs
+git clone <your-repo-url>
+cd Jabberwocky
 ```
-
-### 2. Enable Interception
-
-In `src/lib/`, create (or update) `snifferjs.ts`:
-
-```ts
-import snifferjs from "snifferjs";
-snifferjs.patchAll();
-// Subscribe to snifferjs events and adapt to your InterceptRecord type here.
-```
-
-- **Tip:** Replace imports of `snifferjs-mock` with your new `snifferjs` module.
-
-### 3. Hook UI to snifferjs
-
-- Wherever you subscribe to intercepted events (in state/store/hooks), use the real snifferjs listeners.
-- Make sure each intercepted event is formatted to your UI's `InterceptRecord` type.
-
-> See [`snifferjs` docs](https://github.com/cyphunk/snifferjs) for detailed API.
 
 ---
 
-## Making It a Browser Extension
+### Step 2: Install Dependencies
 
-### 1. Prepare Chrome Manifest
+```sh
+npm install
+```
 
-Create `manifest.json`:
+---
+
+### Step 3: Run Locally
+
+```sh
+npm run dev
+```
+
+Then open your browser at [http://localhost:5173](http://localhost:5173).
+
+---
+
+## Functional Integration: Using snifferjs
+
+_Hook up the real PII interception with just a few steps!_
+
+### Install and Setup
+
+1. **Install snifferjs**
+
+   ```sh
+   npm install snifferjs
+   ```
+
+2. **Create the Integration File**
+
+   Create `src/lib/snifferjs.ts`:
+
+   ```ts
+   // src/lib/snifferjs.ts
+   import snifferjs from "snifferjs";
+   snifferjs.patchAll();
+   // OPTIONAL: Export event bridge logic if needed.
+   ```
+
+3. **Replace the Mock Import**
+
+   - Find all uses of `snifferjs-mock` in your source and **replace** with your new `snifferjs.ts`:
+     > Example:
+     > ```ts
+     > import "./lib/snifferjs";
+     > ```
+
+---
+
+### Implement in Code
+
+- In your root entry (often `src/main.tsx` or `src/App.tsx`), import the integration at the very top (before any React code):
+
+  ```ts
+  import "./lib/snifferjs";
+  ```
+
+- This ensures interception is active **as soon as possible**.
+
+---
+
+### Connect Real Events to UI
+
+- Wherever you build your log/state (for intercepted records), receive real snifferjs events and transform them to your UI’s format (`InterceptRecord`).
+- See `snifferjs` [official docs](https://github.com/cyphunk/snifferjs) for more about subscribing to events.
+
+---
+
+## Make a Browser Extension
+
+Turn this app into a Chrome/Edge extension!
+
+### Step 1: Add `manifest.json`
+
+Create a manifest in your project root. Example:
 
 ```json
 {
@@ -132,42 +168,51 @@ Create `manifest.json`:
   "name": "Jabberwocky",
   "version": "1.0.0",
   "permissions": ["scripting", "activeTab", "storage"],
-  // ...other required fields...
+  "background": {
+    "service_worker": "background.js"
+  }
+  // ...add popup/option page etc as needed...
 }
 ```
+> _Docs:_ [MDN Chrome Extensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json)
 
-- _Load your built `/dist` as "Unpacked" at `chrome://extensions`._
+---
 
-### 2. Inject and enable snifferjs
+### Step 2: Inject snifferjs Early
 
-- Inject your code so `snifferjs.patchAll()` runs as soon as possible in the extension.
+- Ensure `snifferjs.patchAll()` runs as soon as possible (background or content script).
 
-### 3. Use Dashboard as Popup
+---
 
-- The dashboard React UI becomes your extension popup/option page.
+### Step 3: Use the Dashboard as Popup
+
+- Set your **built React app** (`dist`) as the extension's `action.default_popup` in the manifest.
+- Load `/dist` as an unpacked extension:  
+  Go to `chrome://extensions` → Enable "Developer mode" → "Load unpacked".
 
 ---
 
 ## Troubleshooting & FAQ
 
-- **Images not showing?**
-  - Use `/screenshots/` path and check filename case.
-- **snifferjs not patching?**
-  - Import/patch as early as possible. Console-log for confirmation.
-- **Build issues?**
-  - Run `npm install` again, check Node version, or clear npm/yarn cache.
+**Images not showing?**  
+- Double-check screenshot paths; these are relative to your `/screenshots` directory.
 
-- **Need more help?**  
-  See [Lovable docs](https://docs.lovable.dev/) or [Open Issue](https://lovable.dev).
+**Getting “snifferjs not patching”?**  
+- Ensure `snifferjs` is imported/initialized *before* the app mounts.
+
+**Other issues?**  
+- Make sure all dependencies are installed  
+- Try restarting your dev server  
+- Watch your browser console for errors
 
 ---
 
 ## Credits & License
 
-- **Author:** Sam Krystal  
+- **Author:** Sam Krystal
 - Built using [Lovable](https://lovable.dev) + [OpenAI](https://openai.com)
 - PII interception via [snifferjs](https://github.com/cyphunk/snifferjs)
 - Icons by [lucide.dev](https://lucide.dev/)
-- See LICENSE for terms.
+- See [LICENSE](LICENSE) for full terms
 
 ---
