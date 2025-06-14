@@ -53,26 +53,19 @@ export default function Index() {
     };
   }, []);
 
-  // Redesigned Hero/Intro copy - more elegant, concise, privacy-first
+  // Redesigned Hero/Intro copy - branding, subtitle
   const hero = (
     <div className="flex-1 text-center font-sans">
-      <h1 className="text-3xl md:text-4xl font-extrabold flex flex-col items-center justify-center gap-1 text-white">
-        <span className="font-brand block text-4xl tracking-tight text-red-400 drop-shadow-sm mb-1">Jabberwocky</span>
-        <span className="flex items-center gap-2">
-          <Shield className="text-red-500" size={32} />
-          <span>PII Intercept Shield</span>
+      <h1 className="text-3xl md:text-4xl font-extrabold flex flex-col items-center justify-center gap-2 text-white">
+        <span className="flex items-center gap-2 font-brand block text-4xl tracking-tight text-red-400 drop-shadow-sm mb-1">
+          <Shield className="text-red-400 mr-1" size={32} />
+          Jabberwocky
+        </span>
+        <span className="text-base md:text-lg font-medium text-gray-300 tracking-wide" style={{ fontSize: "1.17rem" }}>
+          <span className="font-semibold">Personally Identifiable Information Shield</span>
+          <span className="hidden sm:inline"> (PII Intercept Shield)</span>
         </span>
       </h1>
-      <p className="mt-3 max-w-2xl mx-auto text-white/90 text-lg leading-relaxed font-medium">
-        <span className="inline-block font-semibold text-red-400 bg-white/[0.05] rounded px-2 py-0.5 mr-2 tracking-wide">PII = <span className="underline decoration-red-400/60">Personally Identifiable Information</span></span>
-        <span className="block mt-2 text-xl font-semibold text-white">
-          Instantly intercepts and scrambles unencrypted PII/device info before it’s transmitted.
-        </span>
-        <span className="block mt-2 text-base text-gray-300 font-normal">
-          100% private—no accounts, no tracking, no cloud.<br className="hidden sm:inline" />
-          PII never leaves your computer. 
-        </span>
-      </p>
     </div>
   );
 
@@ -153,39 +146,16 @@ export default function Index() {
           <section className="flex flex-col gap-4 pb-2 w-full">
             {hero}
           </section>
-          {/* Centered ON indicator */}
-          <section className="w-full flex flex-col items-center mt-0 mb-2">
-            <div className="flex flex-row items-center justify-center gap-3 mt-2 mb-4">
+
+          {/* Centered Live Log ON/OFF with switch (inline) */}
+          <section className="w-full flex flex-col items-center mt-0 mb-4">
+            <div className="flex flex-row items-center justify-center gap-3 mt-2 mb-2">
               <span className={enabled
-                ? "bg-red-500/90 text-white font-semibold text-sm rounded-full px-4 py-1 drop-shadow"
-                : "bg-gray-900 text-gray-400 font-semibold text-sm rounded-full px-4 py-1"}>
+                ? "bg-red-500/90 text-white font-semibold text-sm rounded-full px-4 py-1 drop-shadow select-none"
+                : "bg-gray-900 text-gray-400 font-semibold text-sm rounded-full px-4 py-1 select-none"}>
                 Live PII Intercept Log {enabled ? "ON" : "OFF"}
               </span>
-              {/* The toggle is now in the log control bar; so we just show ON/OFF here */}
-            </div>
-          </section>
-
-          {/* Log Controls and Toggle */}
-          <section className="w-full flex flex-row flex-wrap items-center justify-between mb-1 gap-y-2">
-            <div className="flex gap-2">
-              <button
-                onClick={handleClear}
-                className="px-3 py-1 bg-gray-800 hover:bg-red-800 text-white transition-colors rounded text-xs font-semibold border border-red-900"
-              >
-                <Trash2 size={14} className="inline mr-1" />Clear
-              </button>
-              <button
-                onClick={() => downloadAsCSV(records)}
-                className="px-3 py-1 bg-gray-800 hover:bg-red-800 text-white transition-colors rounded text-xs font-semibold border border-red-900"
-              >
-                <Download size={14} className="inline mr-1" />Download CSV
-              </button>
-            </div>
-            <div className="flex flex-col items-center">
               <PiiToggle enabled={enabled} onToggle={setEnabled} />
-              <span className="text-xs text-muted-foreground mt-1 italic select-none">
-                (Click to {enabled ? "disable" : "enable"})
-              </span>
             </div>
           </section>
 
@@ -208,6 +178,21 @@ export default function Index() {
           {/* Live Intercept Log */}
           <section className="w-full">
             <PiiInterceptTable records={records} />
+            {/* Clear & Download controls UNDER log */}
+            <div className="flex gap-3 mt-4 justify-center">
+              <button
+                onClick={handleClear}
+                className="px-3 py-1 bg-gray-800 hover:bg-red-800 text-white transition-colors rounded text-xs font-semibold border border-red-900 flex items-center gap-1"
+              >
+                <Trash2 size={14} className="inline mr-1" />Clear
+              </button>
+              <button
+                onClick={() => downloadAsCSV(records)}
+                className="px-3 py-1 bg-gray-800 hover:bg-red-800 text-white transition-colors rounded text-xs font-semibold border border-red-900 flex items-center gap-1"
+              >
+                <Download size={14} className="inline mr-1" />Download CSV
+              </button>
+            </div>
           </section>
         </div>
         <div className="mt-10 mb-2 text-center text-xs text-gray-500">
