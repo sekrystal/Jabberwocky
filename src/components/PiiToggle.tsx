@@ -3,14 +3,15 @@ import * as React from "react";
 import { Switch } from "@/components/ui/switch";
 import { enablePiiInterception, disablePiiInterception } from "../lib/snifferjs-mock";
 import { toast } from "@/hooks/use-toast";
-import { ShieldCheck, Bug } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 type Props = {
   enabled: boolean;
   onToggle: (state: boolean) => void;
+  showClickHint?: boolean; // NEW: for "Click to ..." message below
 };
 
-export default function PiiToggle({ enabled, onToggle }: Props) {
+export default function PiiToggle({ enabled, onToggle, showClickHint }: Props) {
   const [switchAnim, setSwitchAnim] = React.useState(false);
 
   const handleSwitch = (checked: boolean) => {
@@ -23,45 +24,41 @@ export default function PiiToggle({ enabled, onToggle }: Props) {
       disablePiiInterception();
       toast({ title: "Protection disabled", description: "Stopped intercepting outgoing data." });
     }
-    // End anim after a short time
     setTimeout(() => setSwitchAnim(false), 600);
   };
 
   return (
-    <div
-      className={`flex items-center gap-3 transition-all duration-300 ${
-        enabled
-          ? "scale-105 drop-shadow-[0_2px_12px_rgba(34,197,94,0.30)]"
-          : "opacity-80"
-      } ${switchAnim ? "animate-pulse" : ""}`}
-      title="Toggle PII shielding ON/OFF anytime. No data ever leaves your computer."
-    >
-      <Switch
-        id="pii-toggle"
-        checked={enabled}
-        onCheckedChange={handleSwitch}
-        className="border-green-400 border-2"
-      />
-      <label
-        htmlFor="pii-toggle"
-        className="text-lg font-semibold cursor-pointer select-none flex gap-2 items-center"
+    <div className={`flex flex-col gap-0 items-start`}>
+      <div
+        className={`flex items-center gap-3 transition-all duration-300 ${
+          enabled
+            ? "scale-105 drop-shadow-[0_2px_12px_rgba(239,68,68,0.18)]"
+            : "opacity-80"
+        } ${switchAnim ? "animate-pulse" : ""}`}
+        title="Toggle PII shielding ON/OFF anytime. No data ever leaves your computer."
       >
-        <ShieldCheck className="text-green-400" size={22} />
-        Live PII Intercept
-        <span className="ml-2 text-xs font-normal text-muted-foreground hidden sm:inline">
+        <Switch
+          id="pii-toggle"
+          checked={enabled}
+          onCheckedChange={handleSwitch}
+          className="border-red-400 border-2"
+        />
+        <span
+          className={`px-2 py-0.5 rounded text-xs font-mono transition-all ${
+            enabled
+              ? "bg-red-100/80 text-red-700 border-red-400 border font-bold"
+              : "bg-gray-700/80 text-gray-300 border border-gray-400"
+          }`}
+          aria-live="polite"
+        >
+          {enabled ? "ON" : "OFF"}
+        </span>
+      </div>
+      {showClickHint && (
+        <span className="text-xs text-muted-foreground mt-1 pl-1 italic select-none">
           (Click to {enabled ? "disable" : "enable"})
         </span>
-      </label>
-      <span
-        className={`px-2 py-0.5 rounded text-xs font-mono transition-all ${
-          enabled
-            ? "bg-green-100/80 text-green-700 border-green-400 border font-bold"
-            : "bg-gray-600/60 text-gray-200 border border-gray-400"
-        }`}
-        aria-live="polite"
-      >
-        {enabled ? "ON" : "OFF"}
-      </span>
+      )}
     </div>
   );
 }

@@ -52,6 +52,24 @@ export default function Index() {
     };
   }, []);
 
+  // Hero/Intro copy - refined for elegance and clarity
+  const hero = (
+    <div className="flex-1">
+      <h1 className="text-3xl md:text-4xl font-extrabold flex items-center gap-3 text-white">
+        <Shield className="text-red-500" size={36} />
+        PII & Device Info Intercept Shield
+      </h1>
+      <p className="mt-2 md:mt-3 max-w-2xl text-white/90 text-lg leading-relaxed">
+        <span className="inline-block font-bold text-red-400 bg-white/[0.05] rounded px-2 py-0.5 mr-2">Private Demo</span>
+        Stops unencrypted personal or device info from leaking out—scrambles outgoing data before it leaves your browser.
+        <br className="hidden md:inline" />
+        <span className="block mt-2 text-sm text-gray-300">
+          <span className="font-semibold text-white">No login.</span> <span className="text-red-400">No tracking.</span> <span className="font-semibold text-white">Everything happens 100% on your device.</span>
+        </span>
+      </p>
+    </div>
+  );
+
   // Responsive sidebar navigation (mock: as a vertical panel)
   return (
     <div className="relative min-h-screen flex text-white transition-colors duration-300 bg-black">
@@ -99,21 +117,9 @@ export default function Index() {
           ref={mainCardRef}
           className="w-full max-w-4xl mx-auto bg-gradient-to-tr from-[#18181b] via-[#222226] to-[#1a1a1d] rounded-2xl shadow-2xl border border-red-900 border-opacity-50 p-7 sm:p-10 space-y-8 relative animate-fade-in"
         >
-          {/* Header + Toggle */}
-          <section className="flex flex-col md:flex-row gap-7 md:items-center pb-2 md:justify-between w-full">
-            <div className="flex-1">
-              <h1 className="text-3xl md:text-4xl font-extrabold flex items-center gap-3 text-white">
-                <Shield className="text-red-500" size={36} />
-                PII & Device Info Intercept Shield
-              </h1>
-              <p className="text-lg mt-2 md:mt-4 max-w-2xl text-gray-300">
-                Instantly scrambles unencrypted PII/device info before it's transmitted—no accounts, no tracking, no data ever leaves your computer.
-                <span className="ml-2 inline-block font-semibold text-white bg-red-700 rounded px-2 py-0.5 animate-pulse">100% Private</span>
-              </p>
-            </div>
-            <div className="shrink-0 pt-4 md:pt-0 md:pl-4 flex flex-col items-end gap-2">
-              <PiiToggle enabled={enabled} onToggle={setEnabled} />
-            </div>
+          {/* Refined Header + Toggle Layout */}
+          <section className="flex flex-col gap-4 pb-2 w-full">
+            {hero}
           </section>
 
           {/* What is protected card */}
@@ -134,26 +140,15 @@ export default function Index() {
 
           {/* Live Intercept Log */}
           <section className="w-full">
-            <div className="flex items-center mb-2 gap-2">
-              <h3 className="font-semibold text-lg text-white">Live Intercept Log</h3>
-              <span className="text-xs text-gray-500">(AI demo simulation)</span>
-              <div className="flex-1" />
-              <button
-                className="inline-flex items-center gap-1 px-3 py-1 rounded bg-red-700 text-white text-xs hover:bg-red-800 transition mr-2"
-                onClick={() => downloadAsCSV(records)}
-                disabled={!records.length}
-                title="Download as CSV"
-              >
-                <Download size={14} /> Download
-              </button>
-              <button
-                className="inline-flex items-center gap-1 px-3 py-1 rounded bg-red-900 text-white text-xs hover:bg-red-800 transition"
-                onClick={() => setRecords([])}
-                disabled={!records.length}
-                title="Clear log"
-              >
-                <Trash2 size={14} /> Clear
-              </button>
+            <div className="flex flex-col gap-2 mb-2">
+              <h3 className="font-semibold text-xl text-white mb-1">Live PII Intercept Log</h3>
+              <div className="flex items-center gap-3">
+                <PiiToggle
+                  enabled={enabled}
+                  onToggle={setEnabled}
+                  showClickHint
+                />
+              </div>
             </div>
             <PiiInterceptTable records={records} />
           </section>
