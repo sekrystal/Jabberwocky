@@ -7,7 +7,7 @@
 
 <!-- Hero banner with the quadrant layout and demo (remove old gif reference) -->
 <p align="center">
-  <img src="screenshots/popup-modal.png" width="300" alt="Quadrant 3 - Extension Popup" />
+  GIF PLACEHOLDER
 </p>
 
 ---
