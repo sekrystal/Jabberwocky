@@ -7,7 +7,7 @@
 ## About
 
 **Jabberwocky** is a browser privacy shield. It intercepts and scrambles your personal data before it ever leaves your computer—no cloud, no trackers, no leaks.  
-**This project was made for the [Lovable Competition](https://lovable.dev)!**
+**This project was made for the [Lovable AI Showdown](https://aishowdown.lovable.app/)!**
 
 ---
 
