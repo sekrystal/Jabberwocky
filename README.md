@@ -60,9 +60,6 @@ Example usage screenshots—in a quadrant layout—below:
   <img src="screenshots/Plugin Modal.png" width="320" alt="Plugin Modal" />
 </p>
 
-> 🖼️ **To update or add your own screenshots or GIFs:**  
-> Place new image files inside the `/screenshots` directory and reference them in the README as needed.
-
 ---
 
 ## Table of Contents
@@ -143,10 +140,8 @@ Convert Jabberwocky to a Chrome/Edge extension:
 
 ## Troubleshooting & FAQ
 
-- **Screenshots not showing?**  
-  Check spelling and extension. Files MUST be in `/screenshots`.
 - **snifferjs not active?**  
-  Check browser console for errors; confirm extension steps.
+  Check browser console for errors; confirm extension steps. ChatGPT can help with the rest!
 - **Afraid of the terminal?**  
   Use VSCode or GitHub Desktop to install/run things with click buttons!
 
