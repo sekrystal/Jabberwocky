@@ -5,9 +5,9 @@
 
 ---
 
-<!-- Hero banner with the quadrant layout and demo (remove old gif reference) -->
+<!-- Hero banner using one of the user's PNGs -->
 <p align="center">
-  GIF PLACEHOLDER
+  <img src="screenshots/dashboard-on.png" width="400" alt="Jabberwocky Dashboard screenshot" />
 </p>
 
 ---
@@ -44,18 +44,17 @@ All images are shipped with this repo in `/screenshots` for reliable rendering.
 <table>
   <tr>
     <td>
-      <img src="screenshots/dashboard-on.png" width="300" />
+      <img src="screenshots/dashboard-on.png" width="300" alt="Dashboard Protection On" />
     </td>
     <td>
-      <img src="screenshots/dashboard-off.png" width="300" />
+      <img src="screenshots/dashboard-off.png" width="300" alt="Dashboard Protection Off" />
     </td>
   </tr>
   <tr>
     <td>
-      <img src="screenshots/popup-modal.png" width="300" />
+      <img src="screenshots/popup-modal.png" width="300" alt="Extension Popup Modal" />
     </td>
     <td>
-      <img src="screenshots/Plugin Modal.png" width="300" />
     </td>
   </tr>
 </table>
@@ -64,30 +63,28 @@ All images are shipped with this repo in `/screenshots` for reliable rendering.
 
 ## Quick Start & Onboarding
 
-Getting started is easy, even if you've never used a terminal before.  
+Getting started is easy—even if you've never used a terminal before!
 
 ### 1. Download the Code
 
-- On GitHub, click the **Code** button and “Download ZIP”. Unzip it.
+- On GitHub, click the **Code** button and select _“Download ZIP”_. Unzip it.
 
 ### 2. Install Dependencies
 
-- If you use [Visual Studio Code](https://code.visualstudio.com/), open this folder and click “Install dependencies” when prompted.  
-- Or in a terminal window (search for “Terminal” or “Command Prompt” in your OS):
-
+- **Recommended:** Use [Visual Studio Code](https://code.visualstudio.com/).  
+  Open this folder and click “Install dependencies” when prompted.
+- **Or:** Open Terminal/Command Prompt, then run:
   ```sh
   npm install
   ```
 
 ### 3. Run the App Locally
 
-- In VSCode: click “Run and Debug” or open a terminal and type:
-
+- Still in VSCode: click “Run and Debug” or run in terminal:
   ```sh
   npm run dev
   ```
-
-- Navigate to [http://localhost:5173](http://localhost:5173) in your web browser.
+- Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
@@ -97,16 +94,13 @@ Give your local app real PII protection:
 
 ### 1. Install snifferjs
 
-Open your terminal and type:
-
 ```sh
 npm install snifferjs
 ```
 
-### 2. Create the Integration
+### 2. Integrate snifferjs
 
-- Go to the `/src/lib/` folder (create if missing),  
-- Make `snifferjs.ts`:
+- In the `/src/lib/` folder (create if missing), make a file called `snifferjs.ts`:
 
   ```ts
   // src/lib/snifferjs.ts
@@ -114,21 +108,23 @@ npm install snifferjs
   snifferjs.patchAll();
   ```
 
-- In your main entry point (`src/main.tsx`), at the very top, add:
+- In your main entry point (`src/main.tsx`), add at the VERY TOP:
 
   ```ts
   import "./lib/snifferjs";
   ```
 
-That's it—PII interception runs as soon as your app starts.
+That’s it—protection is enabled automatically when your app starts.
 
 ---
 
 ## How to Make a Browser Extension
 
-You can turn Jabberwocky into a Chrome/Edge extension! Here’s a step-by-step, including a manifest you can copy:
+You can turn Jabberwocky into a Chrome/Edge extension! Here’s how:
 
-### 1. Create `manifest.json` in your project root
+### 1. Use this manifest.json (copy-paste as is)
+
+Create a `manifest.json` in your project root **exactly like this**:
 
 ```json
 {
@@ -162,20 +158,20 @@ You can turn Jabberwocky into a Chrome/Edge extension! Here’s a step-by-step, 
 }
 ```
 
-### 2. Patch snifferjs as Early As Possible
+### 2. Patch snifferjs *immediately* in your content script
 
-At the **TOP** of your content script (`content.js`):
+At the very top of your `content.js` file, add:
 
 ```js
 import snifferjs from "snifferjs";
 snifferjs.patchAll();
 ```
-This ensures privacy protection is active as soon as any webpage script runs.
+> This ensures Jabberwocky privacy protection runs before any page scripts can capture your data.
 
 ### 3. Load as an Unpacked Extension
 
-- Run `npm run build` to generate the `/dist` folder.
-- Go to `chrome://extensions`
+- Run `npm run build` to generate your `/dist` folder.
+- In your browser go to `chrome://extensions`
 - Enable “Developer mode”
 - Click “Load unpacked” and select your `/dist` folder.
 
@@ -183,14 +179,14 @@ This ensures privacy protection is active as soon as any webpage script runs.
 
 ## Troubleshooting & FAQ
 
-**Why aren't screenshots or images showing up?**  
-Check that your image filenames match those in the `/screenshots` folder (including case sensitivity).
+**Why don’t screenshots or images show up?**  
+Check that your image filenames exactly match those in the `/screenshots` folder.
 
-**snifferjs not active?**  
-Check your browser’s console for errors; ensure you followed the integration steps above.
+**snifferjs not active in your browser?**  
+Check your browser’s console for errors; make sure you followed the extension setup steps closely.
 
 **Not comfortable with the Terminal?**  
-Use GitHub Desktop or Visual Studio Code—you can click instead of type!
+Use Visual Studio Code or GitHub Desktop—both support installing and running projects with just a few clicks!
 
 ---
 
@@ -206,6 +202,4 @@ Use GitHub Desktop or Visual Studio Code—you can click instead of type!
 
 ## About Confident Security
 
-[Confident Security](https://confident.security/) helps organizations solve the hardest privacy and security challenges, from preventing breaches to building cutting-edge privacy products.  
-**If you care about privacy for your company, clients, or product, [reach out to Sam Krystal](https://confident.security/)** and let's build the future of private tech together!
-
+I care deeply about data privacy. So much so that I work at [Confident Security](https://confident.security/). We build provably private AI—if you’re worried about your data privacy and security, or are building an AI product that might want to partner with us, reach out!
