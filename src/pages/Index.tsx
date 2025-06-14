@@ -12,13 +12,7 @@ import DataTypeList from "../components/DataTypeList";
 import InterceptControls from "../components/InterceptControls";
 import InterceptLogActions from "../components/InterceptLogActions";
 
-// Add the screenshots image imports (served from /screenshots via public directory)
-const screenshots = [
-  { src: "/screenshots/Dashboard Top.png", alt: "Dashboard Top" },
-  { src: "/screenshots/Dashboard Bottom.png", alt: "Dashboard Bottom" },
-  { src: "/screenshots/PII Download.png", alt: "PII Download" },
-  { src: "/screenshots/Plugin Modal.png", alt: "Plugin Modal" },
-];
+// REMOVE screenshots references and image quadrant from homepage UI
 
 function downloadAsCSV(records: InterceptRecord[]) {
   if (!records.length) return;
@@ -95,28 +89,6 @@ export default function Index() {
       </aside>
 
       <main className="flex-1 flex flex-col items-center px-2 sm:px-8 pt-8 min-h-screen relative z-10 font-sans">
-        {/* Screenshot quadrant grid */}
-        <section className="w-full flex flex-col items-center mb-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto w-full place-items-center">
-            {screenshots.map(({ src, alt }) => (
-              <div
-                key={src}
-                className="bg-[#131314] border border-red-900 border-opacity-30 rounded-lg shadow overflow-hidden flex items-center justify-center w-full aspect-[4/3] max-h-72"
-              >
-                <img
-                  src={src}
-                  alt={alt}
-                  className="object-contain w-full h-full"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="text-xs text-gray-400 text-center mt-2">
-            {/* Optionally, a caption bar below the images */}
-            <span>Screenshots of Jabberwocky in action—see README for details.</span>
-          </div>
-        </section>
         <HelpPopover />
 
         <div

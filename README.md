@@ -1,6 +1,11 @@
-// Jabberwocky
 
-> _A privacy-first browser utility that intercepts and obfuscates PII directly in your browser—on your device only.
+# Jabberwocky
+
+<p align="center">
+  <img src="screenshots/gifdemo.gif" alt="Jabberwocky Demo Banner" width="640" />
+</p>
+
+> _A privacy-first browser utility that intercepts and obfuscates PII directly in your browser—on your device only._
 
 ---
 
@@ -13,10 +18,11 @@
 
 ## Quick Start
 
-**Run the demo locally:**
+**Run the demo locally:**  
+_(The “demo” is the local app UI. For real intercept support, see the integration section below)._
 
 - Follow the install and run steps below. This demo works locally and demonstrates the UI and logs.
-- **Note:** The _real_ thing (live PII interception) also requires integration with `snifferjs` as described below!
+- **Note:** The _real_ thing (live PII interception) also requires integration with `snifferjs`, as described further below!
 
 ### 1. Get the Code
 
@@ -45,14 +51,17 @@
 ## Screenshots & GIFs
 
 Want to see what Jabberwocky looks like?  
-Example usage (used on the homepage):
+Example usage screenshots—in a quadrant layout—below:
 
 <p align="center">
   <img src="screenshots/Dashboard Top.png" width="320" alt="Dashboard Top" />
-  <img src="screenshots/Dashboard Bottom.png" width="320" alt="Dashboard Bottom" />
+  <img src="screenshots/Dashboard Bottom.png" width="320" alt="Dashboard Bottom" /><br />
   <img src="screenshots/PII Download.png" width="320" alt="PII Download" />
   <img src="screenshots/Plugin Modal.png" width="320" alt="Plugin Modal" />
 </p>
+
+> 🖼️ **To update or add your own screenshots or GIFs:**  
+> Place new image files inside the `/screenshots` directory and reference them in the README as needed.
 
 ---
 
@@ -128,7 +137,7 @@ Convert Jabberwocky to a Chrome/Edge extension:
    ```
 3. **Load in chrome://extensions:**  
    - Enable “Developer mode”
-   - “Load unpacked” &rarr; `/dist` folder
+   - “Load unpacked” → `/dist` folder
 
 ---
 
@@ -158,3 +167,4 @@ I work at [Confident Security](https://confident.security)—we build provably p
 
 **Follow us for privacy news and updates:**  
 👉 [@confident_sec on Twitter/X](https://x.com/confident_sec)
+
