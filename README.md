@@ -7,10 +7,7 @@
 
 <!-- Hero banner with the quadrant layout and demo (remove old gif reference) -->
 <p align="center">
-  <img src="screenshots/dashboard-on.png" width="300" alt="Dashboard quadrant 1" />
-  <img src="screenshots/dashboard-off.png" width="300" alt="Dashboard quadrant 2" />
   <img src="screenshots/popup-modal.png" width="300" alt="Quadrant 3 - Extension Popup" />
-  <img src="screenshots/Plugin Modal.png" width="300" alt="Quadrant 4" />
 </p>
 
 ---
