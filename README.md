@@ -1,7 +1,7 @@
 
 # Jabberwocky
 
-![Jabberwocky Hero Dashboard](screenshots/dashboard-on.png)
+![Dashboard ON](screenshots/dashboard-on.png)
 
 ## Overview
 
@@ -94,6 +94,27 @@ Jabberwocky is a privacy-first utility that intercepts and obfuscates personally
 
 ---
 
+## Additional Screenshots
+
+Here are some extra, visually rich images relevant for demos, blog posts, or documentation:
+
+**Matrix Movie Still**
+![Matrix movie still](https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=max&w=1200)
+
+**A woman sitting on a bed using a laptop**
+![A woman on bed with laptop](https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=max&w=1200)
+
+**Woman in white long sleeve shirt using black laptop**
+![Woman using laptop](https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=max&w=1200)
+
+**Body of water surrounded by trees**
+![Body of water](https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=max&w=1200)
+
+**Orange and white tabby cat lying on brown and black floral textile**
+![Orange cat](https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=max&w=1200)
+
+---
+
 ## How Does It Work?
 
 - By default, this app simulates interception of data (for the contest version—actual interception is not yet functional).
@@ -168,7 +189,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Credits & License
 
-- UI and logic by [your name], built with [Lovable](https://lovable.dev) and OpenAI.
+- UI and logic by Sam Krystal, built with [Lovable](https://lovable.dev) and OpenAI.
 - [snifferjs](https://github.com/cyphunk/snifferjs) for API interception (integration pending).
 - Icons by [lucide.dev](https://lucide.dev/).
 - See LICENSE for terms (please add your license).
