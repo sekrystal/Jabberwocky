@@ -3,8 +3,6 @@
 
 ![Jabberwocky Hero Dashboard](screenshots/dashboard-on.png)
 
-> **Project repo name:** _Please rename this repository to `Jabberwocky` on GitHub for contest eligibility and clarity!_
-
 ## Overview
 
 Jabberwocky is a privacy-first utility that intercepts and obfuscates personally identifiable information (PII) from your browser—before it can leave your computer. Inspired by the recent changes to Chromium (June 2024) that broke traditional ad blockers and privacy extensions, Jabberwocky aims to fill the gap with a transparent, 100% local solution.
