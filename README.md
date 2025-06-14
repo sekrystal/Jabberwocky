@@ -1,4 +1,3 @@
-
 # Jabberwocky
 
 > _A privacy-first browser utility that intercepts and obfuscates PII directly on your device._
@@ -12,6 +11,14 @@
 
 ---
 
+## About
+
+**Jabberwocky** is a powerful privacy tool that intercepts and scrambles your personal data right in your browser—before it ever leaves your device. Designed for effortless use and maximum local privacy, it combines accessibility with true peace of mind.  
+<br>
+_This project was created for the [Lovable competition](https://lovable.dev)!_
+
+---
+
 ## Demo GIF Size Advice
 
 > ⚠️ **Best Practice:** For GitHub READMEs, keep GIF demo files under **5MB** for optimal loading and performance. Trim your GIF to ~10 seconds, use 500–800px width, and consider [EZGIF](https://ezgif.com/optimize) or similar tools to compress and resize. Swap your GIF file in `/screenshots` and update the README reference accordingly.
@@ -20,20 +27,14 @@
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
+- [About](#about)
 - [Screenshots](#screenshots)
 - [Quick Start & Onboarding](#quick-start--onboarding)
 - [Install and Integrate `snifferjs`](#install-and-integrate-snifferjs)
 - [How to Make a Browser Extension](#how-to-make-a-browser-extension)
 - [Troubleshooting & FAQ](#troubleshooting--faq)
 - [Credits & License](#credits--license)
-- [About Confident Security](#about-confident-security)
-
----
-
-## Project Overview
-
-Jabberwocky intercepts and scrambles your browser’s PII (personally identifiable information) — _before it ever leaves your machine_. There is **no cloud**, no tracking, and everything runs 100% locally.
+- [Even Cooler Work](#even-cooler-work)
 
 ---
 
@@ -200,6 +201,10 @@ Use Visual Studio Code or GitHub Desktop—both support installing and running p
 
 ---
 
-## About Confident Security
+## Even Cooler Work
 
-I care deeply about data privacy. So much so that I work at [Confident Security](https://confident.security/). We build provably private AI—if you’re worried about your data privacy and security, or are building an AI product that might want to partner with us, reach out!
+Follow us on Twitter/X for privacy insights and updates: [@confident_sec](https://x.com/confident_sec)
+
+Confident Security creates groundbreaking solutions at the intersection of AI and privacy. We believe data protection should be provable, practical, and easy to use—whether you're building next-gen privacy products or worried about your personal data.  
+<br>
+Want to see the future of privacy in action? Join us and keep up with what’s next!
