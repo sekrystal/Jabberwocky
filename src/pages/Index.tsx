@@ -118,7 +118,16 @@ export default function Index() {
             />
           </section>
         </div>
-        <div className="mt-10 mb-2 text-center text-xs text-gray-500">
+        {/* Add the Complete Build button above the privacy note */}
+        <a
+          href="https://github.com/sekrystal/Jabberwocky/tree/main"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 mb-2 inline-block px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg shadow transition-colors text-xs"
+        >
+          Complete Build
+        </a>
+        <div className="mt-2 mb-2 text-center text-xs text-gray-500">
           <span className="opacity-80">Jabberwocky keeps all intercepted PII logs on your device. No tracking. 100% private.</span>
         </div>
       </main>
