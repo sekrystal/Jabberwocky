@@ -1,4 +1,14 @@
 
+<!-- Badges -->
+<p align="center">
+  <a href="https://github.com/SamKrystal/jabberwocky/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License Badge" />
+  </a>
+  <a href="https://github.com/SamKrystal/jabberwocky/pulls">
+    <img src="https://img.shields.io/badge/PRs-welcome-blue.svg" alt="PRs Welcome Badge" />
+  </a>
+</p>
+
 # Jabberwocky
 
 <p align="center">
@@ -174,7 +184,7 @@ snifferjs.patchAll();
 
 **Common Issues/Tips:**
 - Make sure you select the **built `/dist` folder**, not `/src` or root.
-- If icons or popups don't appear, double check file locations and manifest paths.
+- If icons or popups don't appear, double-check file locations and manifest paths.
 - If you update the code, rebuild (`npm run build`) and re-load the extension.
 
 ---
@@ -182,7 +192,7 @@ snifferjs.patchAll();
 ## Troubleshooting & FAQ
 
 - **snifferjs not active?**  
-  Check browser console for errors; confirm extension steps. ChatGPT can help with the rest!
+  Check the browser console for errors; confirm extension steps. ChatGPT can help with the rest!
 - **Afraid of the terminal?**  
   Use VSCode or GitHub Desktop to install/run things with click buttons!
 
@@ -221,4 +231,5 @@ If you've got a popular AI model, lots of compute, and care about your users, gi
 - 🧹 **Do a final spellcheck and README formatting pass.**
 
 Ready to go public! 🚀
+
 
