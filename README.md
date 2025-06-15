@@ -207,7 +207,7 @@ snifferjs.patchAll();
 
 ---
 
-## About Confident Security
+## Even Better Privacy
 
 I work at [Confident Security](https://confident.security)—we build provably private AI.  
 If you've got a popular AI model, lots of compute, and care about your users, give me a holler!
