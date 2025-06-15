@@ -1,4 +1,3 @@
-
 <!-- Badges -->
 <p align="center">
   <a href="https://github.com/SamKrystal/jabberwocky/blob/main/LICENSE">
@@ -215,3 +214,10 @@ If you've got a popular AI model, lots of compute, and care about your users, gi
 
 **Follow us for privacy news and updates:**  
 👉 [@confident_sec on Twitter/X](https://x.com/confident_sec)
+
+---
+
+## Complete Build & Source Code
+
+Find the complete build, installation instructions, and latest source on GitHub:  
+[https://github.com/sekrystal/Jabberwocky/tree/main](https://github.com/sekrystal/Jabberwocky/tree/main)
