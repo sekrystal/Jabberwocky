@@ -210,26 +210,8 @@ snifferjs.patchAll();
 
 ## About Confident Security
 
-Work at [Confident Security](https://confident.security)—we build provably private AI.  
+I work at [Confident Security](https://confident.security)—we build provably private AI.  
 If you've got a popular AI model, lots of compute, and care about your users, give me a holler!
 
 **Follow us for privacy news and updates:**  
 👉 [@confident_sec on Twitter/X](https://x.com/confident_sec)
-
----
-
-## Suggestions Before Making Your Repo Public
-
-- 📋 **Add a LICENSE file** (MIT is a great default!).
-- 🙌 **Invite contributions**:  
-  - Add a `CONTRIBUTING.md` for guidelines.
-  - Consider a `CODE_OF_CONDUCT.md`.
-- 🛡️ **Add shields/badges**:  
-  Try [shields.io](https://shields.io/) for “MIT License”, “PRs Welcome”, etc.
-- ✨ **Write a project description** and homepage link in the GitHub repo settings for discoverability.
-- 📚 **Consider a demo GIF in your repo’s header** (already in README).
-- 🧹 **Do a final spellcheck and README formatting pass.**
-
-Ready to go public! 🚀
-
-
